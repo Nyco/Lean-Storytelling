@@ -1,15 +1,15 @@
 # TopSol-Playbook
 Story telling from A to Z, for product people
 
-[![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](http://creativecommons.org/licenses/by-sa/4.0/)
+Tell stories easily, using good practices. Useful at every stage of a feature development in a product: specs, sales.
 
-Standing on shoulders of giants, this work is licensed under:
+[![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](http://creativecommons.org/licenses/by-sa/4.0/)
 
 Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
 
 **What is "TopSol Playbook"?**
 
-"TopSol Playbook" is a set of recipes, templates and good practices, te help you shape your story telling, aimed at product people, like product owners, scrum masters, agile coaches, marketing people, sales people, even founders and C-levels CxO.
+"TopSol Playbook" is a set of recipes, templates and good practices, to help you shape your story telling. It is a guidance aimed at product people, like product owners, scrum masters, agile coaches, marketing people, sales people, even founders and C-levels CxO.
 
 **Story telling, you say? What else?**
 
@@ -18,9 +18,11 @@ The "TopSol Playbook" may help you tell stories, but also may help you shape you
 **How is it used? From A to Z?**
 
 It can be used to:
-* describe a User Story or Epic, within an Agile team, using Scrum or Kanban
-* test a solution, or a {unique|key} value proposition, validate or invalidate, persist or pivot, useful for Lean Startup and Design Thinking approaches
+* describe a User Story or Epic, within an Agile team, using Scrum or Kanban, allows to project and better picture the expected outcome
+* in a customer interview, test a solution, or a {unique|key} value proposition, validate or invalidate, persist or pivot, useful for Lean Startup and Design Thinking approaches
 * sell a solution, product, or feature
+
+TopSol Playbook helps you synchronise and align all the people involed in the User Story factory/pipeline.
 
 **What does "TopSol Playbook" stand for?**
 
@@ -32,10 +34,9 @@ It can be used to:
 
 **Where does it come from?**
 
-Standing on shoulders of giants who stand on shoulders of giants: "TopSol Playbook" has its roots in the Lean Canvas approach by Ash Maurya, and gets inspirations from many other sources.
-
-I highly recommend this free online course: https://www.udemy.com/lean-canvas-course/ by Ash Maurya.
-
+Standing on shoulders of giants who stand on shoulders of giants, "TopSol Playbook" has its roots:
+* the Lean Canvas approach by Ash Maurya, I highly recommend this free online course: https://www.udemy.com/lean-canvas-course/ by Ash Maurya.
+* Monomyth or "Hero's journey": https://en.wikipedia.org/wiki/Hero's_journey
 
 **What can I do to help?**
 
