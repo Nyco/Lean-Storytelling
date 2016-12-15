@@ -1,21 +1,36 @@
 # TopSol-Playbook
-Story telling from A to Z, for product people
 
-Tell stories easily, using good practices. Useful at every stage of a feature development in a product: specs, sales.
+**Story telling from A to Z**, *for product people*
+
+Tell stories easily, using good practices. Keep everyone in sync at every stage of a feature development in a product: ideation, specs, development, test, deployment, sales.
+
+-----
+
+# License
 
 [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](http://creativecommons.org/licenses/by-sa/4.0/)
 
 Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
 
-**What is "TopSol Playbook"?**
+You are free to:
+
+* **Share** — copy and redistribute the material in any medium or format
+* **Adapt** — remix, transform, and build upon the material
+for any purpose, even commercially.
+
+-----
+
+# Q&A, FAQ
+
+## What is "TopSol Playbook"?
 
 "TopSol Playbook" is a set of recipes, templates and good practices, to help you shape your story telling. It is a guidance aimed at product people, like product owners, scrum masters, agile coaches, marketing people, sales people, even founders and C-levels CxO.
 
-**Story telling, you say? What else?**
+## Story telling, you say? What else?
 
 The "TopSol Playbook" may help you tell stories, but also may help you shape your {unique|key} value proposition.
 
-**How is it used? From A to Z?**
+## How is it used? From A to Z?
 
 It can be used to:
 * describe a User Story or Epic, within an Agile team, using Scrum or Kanban, allows to project and better picture the expected outcome
@@ -24,7 +39,7 @@ It can be used to:
 
 TopSol Playbook helps you synchronise and align all the people involed in the User Story factory/pipeline.
 
-**What does "TopSol Playbook" stand for?**
+## What does "TopSol Playbook" stand for?
 
 * **Playbook**, because I didn't want another "framework" ;-)
 * **TopSol**, because To-P-Sol:
@@ -32,13 +47,13 @@ TopSol Playbook helps you synchronise and align all the people involed in the Us
   * **P**: Problem, the problem that you have validated they face and suffer from, that is worth fixing
   * **Sol**: Solution, the solution that you bring to your targets, 
 
-**Where does it come from?**
+## Where does it come from?
 
 Standing on shoulders of giants who stand on shoulders of giants, "TopSol Playbook" has its roots:
 * the Lean Canvas approach by Ash Maurya, I highly recommend this free online course: https://www.udemy.com/lean-canvas-course/ by Ash Maurya.
 * Monomyth or "Hero's journey": https://en.wikipedia.org/wiki/Hero's_journey
 
-**What can I do to help?**
+## What can I do to help?
 
 * Star this repository
 * Share this in your networks
