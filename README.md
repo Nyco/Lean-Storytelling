@@ -2,7 +2,9 @@
 
 **Story telling from A to Z**, *for product people*
 
-* Tell stories easily, using common good practices
+What the TopSol Playbook is:
+
+* Technique to tell stories easily, using common good practices
 * It is a basic recipe, easy to read, difficult to master
 * Fit for a product/feature development
 * From early stage to delivery: empathy, problem discovery, ideation, specs, development, test, deployment, sales
@@ -34,18 +36,6 @@ Step | Ingredients | Options
 5 | **Solution**: your solution | 
 6 | | *Benefits*: what your solution provides (cheaper, faster, easier, etc.)
 
-
-# License
-
-[![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](http://creativecommons.org/licenses/by-sa/4.0/)
-
-Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
-
-You are free to:
-
-* **Share** — copy and redistribute the material in any medium or format
-* **Adapt** — remix, transform, and build upon the material
-for any purpose, even commercially.
 
 # Q&A, FAQ
 
@@ -87,3 +77,15 @@ Standing on shoulders of giants who stand on shoulders of giants, "TopSol Playbo
 * Ask questions in the [issues](https://github.com/Nyco/TopSol-Playbook/issues)
 * Submit a patch
 * Share your knowledge and experience
+
+## Can I use, share, and modify the TopSol Playbook?
+
+The TopSol Playbook is licensed under the Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0).
+
+[![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](http://creativecommons.org/licenses/by-sa/4.0/)
+
+You are free to:
+
+* **Share** — copy and redistribute the material in any medium or format
+* **Adapt** — remix, transform, and build upon the material
+for any purpose, even commercially.
