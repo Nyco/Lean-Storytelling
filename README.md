@@ -18,15 +18,11 @@ What the TopSol Playbook is:
 
 # Overview of the playbook
 
-Tell a story, using the base ingredients.
-
-If you want/need to detail, use the options.
-
-Try, learn, get feedback, remix, change, and adapt to your audience, always!
-
-If you reduce your story to the bare minimum, you can land on your Unique Value Proposition (UVP).
-
-If you want to seriously learn story telling techniques, read the right litterature.
+* Tell a story, using the base ingredients.
+* If you want/need to detail, use the options.
+* Try, learn, get feedback, remix, change, and adapt to your audience, always & continuously!
+* If you reduce your story to the bare minimum, just a few words, you might land on your Unique Value Proposition (UVP).
+* If you want to seriously learn strong story telling techniques, read the right litterature.
 
 Step | Ingredients | Options
 :--:|:--|:--
@@ -71,12 +67,14 @@ TopSol Playbook helps you synchronise and align all the people involed in the Us
 Standing on shoulders of giants who stand on shoulders of giants, "TopSol Playbook" has its roots in:
 * the Lean Canvas approach by Ash Maurya, I highly recommend this free online course: https://www.udemy.com/lean-canvas-course/ by Ash Maurya.
 * Monomyth or "Hero's journey": https://en.wikipedia.org/wiki/Hero's_journey
+* "Why How What" by Simon Sinek: https://www.ted.com/talks/simon_sinek_how_great_leaders_inspire_action
 
 ## What can I do to help?
 
 * Star this repository
 * Share this in your networks
 * Ask questions in the [issues](https://github.com/Nyco/TopSol-Playbook/issues)
+* Suggest modifications
 * Submit a patch
 * Share your knowledge and experience
 
