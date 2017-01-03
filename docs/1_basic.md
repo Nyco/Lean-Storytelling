@@ -30,7 +30,7 @@ Your solution to your target's problem.
 
 1. Target: product people, like product owner, marketing persons, sales people, founders, C*O
 1. Problem: they fail to generate compelling and crisp stories
-1. Solution: use the Basic template of the TopSol Playbook
+1. Solution: use the Basic template of the TopSol Playbook, the target-problem-solution articulation
 
 Template:
 ```
@@ -43,5 +43,5 @@ Story:
 ```
 DID YOU KNOW THAT most product people, like product owner, marketing persons, sales people, founders, C*O
 fail to generate compelling and crisp stories?
-WELL WE PROVIDE the Basic template of the TopSol Playbook
+WELL WE PROVIDE the Basic template of the TopSol Playbook, the target-problem-solution articulation
 ```
