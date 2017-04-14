@@ -7,14 +7,15 @@
 What the TopSol Playbook is:
 
 * Technique to tell stories easily, using common good practices
-* It is a basic recipe, easy to read, difficult to master
-* Fit for a product/feature development
-* From early stage to delivery: empathy, problem discovery, ideation, specs, development, test, deployment, sales
-* Keep everyone in sync and aligned across different teams (remove some of the natural friction)
-* People will understand the "why"
-* Inspired by Lean Canvas and Monomyth
-* Roots in Agile, Lean Startup, Design Thinking
-* Very simple, and limited by design, using the systemic approach
+
+* It is a basic set of recipes, that is quite easy to read and understand, but difficult to master
+* Fit for a product/feature development, not to be a succesful Hollywood writer
+* Usable from early stage to delivery: empathy, problem discovery, ideation, specs, development, test, deployment, communciation, sales
+* Keep everyone in sync and aligned across different teams, remove some of the natural friction
+* People will understand the "why", the goal, the guiding light
+* Inspired by Lean Canvas, Monomyth, and why-how-what articulation
+* Roots in Agile, Lean Startup, Design Thinking, UX research
+* Very simple and humble, voluntarily limited by design, using the systemic approach
 
 # Overview of the playbook
 
@@ -27,13 +28,13 @@ What the TopSol Playbook is:
 Step | Ingredients | Options
 :--:|:--|:--
 0 | | *Context*: where, when, past vs future
-1 | **Target**: who it is for | 
-2 |  | *Elements of empathy*: what they need/want/hate
+1 | **Target**: who it is for |
+2 |  | *Elements of empathy*: what targets need/want/hate
 3 | **Problem**: the pain they suffer from |
 4 | | *Consequence*: the results of this problem
 5 | **Solution**: your solution | 
-6 | | *Benefits*: what your solution provides (cheaper, faster, easier, etc.)
-
+6 | | *Benefits*: cheaper, faster, easier, etc.
+7 | | *Why*: change the world |
 
 # Q&A, FAQ
 
