@@ -8,6 +8,8 @@ What the TopSol Playbook is:
 
 * Technique to tell stories easily, using common good practices
 
+More:
+
 * It is a basic set of recipes, that is quite easy to read and understand, but difficult to master
 * Fit for a product/feature development, not to be a succesful Hollywood writer
 * Usable from early stage to delivery: empathy, problem discovery, ideation, specs, development, test, deployment, communciation, sales
