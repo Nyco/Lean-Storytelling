@@ -29,14 +29,15 @@ More:
 
 Core | Options | More options
 :--:|:--|:--
- | | | **Context**: where, when, past vs future | 
- | **Target**: who it is for |
- |  | **Empathy**: what targets need/want/hate
- | **Problem**: the pain they suffer from |
- | | **Consequence**: the results of this problem
- | **Solution**: your solution | 
- | | **Benefits**: cheaper, faster, easier, etc.
- | | | **Why**: change the world |
+| | | *Context* | 
+| **Target** | 
+|  | *Empathy*
+| **Problem** |
+| | *Consequence* 
+| **Solution** | 
+| | *Benefits* 
+| | | *Why* |
+
 
 # Q&A, FAQ
 
