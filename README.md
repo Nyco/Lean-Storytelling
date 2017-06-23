@@ -27,16 +27,16 @@ More:
 * If you reduce your story to the bare minimum, just a few words, you might land on your Unique Value Proposition (UVP).
 * If you want to seriously learn strong story telling techniques, read the right litterature.
 
-Step | Ingredients | Options
+Step | Core | Options | Optional options
 :--:|:--|:--
-0 | | *Context*: where, when, past vs future
+0 | | | *Context*: where, when, past vs future
 1 | **Target**: who it is for |
 2 |  | *Elements of empathy*: what targets need/want/hate
 3 | **Problem**: the pain they suffer from |
 4 | | *Consequence*: the results of this problem
 5 | **Solution**: your solution | 
 6 | | *Benefits*: cheaper, faster, easier, etc.
-7 | | *Why*: change the world |
+7 | | | *Why*: change the world |
 
 # Q&A, FAQ
 
