@@ -11,11 +11,11 @@ What the TopSol Playbook is:
 More:
 
 * It is a basic set of recipes, that is quite easy to read and understand, but difficult to master
-* Fit for a product/feature development, not to be a succesful Hollywood writer
-* Usable from early stage to delivery: empathy, problem discovery, ideation, specs, development, test, deployment, communciation, sales
+* Fit for a product/feature development, not to be a succesful Hollywood screenwriter, or awarded novelist
+* Usable from early stage to delivery: empathy, problem discovery, ideation, specs, development, test, deployment, communciation, sales, advertising, explainer videos, documentation
 * Keep everyone in sync and aligned across different teams, remove some of the natural friction
 * People will understand the "why", the goal, the guiding light
-* Inspired by Lean Canvas, Monomyth, and why-how-what articulation
+* Inspired by Lean Canvas, Monomyth, and The Golden Circle
 * Roots in Agile, Lean Startup, Design Thinking, UX research
 * Very simple and humble, voluntarily limited by design, using the systemic approach
 
@@ -26,6 +26,7 @@ More:
 * Try, learn, get feedback, remix, change, and adapt to your audience, always & continuously!
 * If you reduce your story to the bare minimum, just a few words, you might land on your Unique Value Proposition (UVP).
 * If you want to seriously learn strong story telling techniques, read the right litterature.
+* This story telling technique differentiates: it is lean and agile, not generic, more dedicated to businesses
 
 Core | Options | More options
 :--:|:--|:--
