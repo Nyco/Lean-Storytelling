@@ -65,33 +65,17 @@
 - **Why**: The core motivation or guiding principle behind your story
 
 ---
+### FULL STORY
 
-+---------------------+
-|     FULL STORY      |
-+----------+----------+
-           |
-   +-------v-------+
-   |    CONTEXT    |
-   +-------+-------+
-           |
-   +-------v-------+
-   |    TARGET     |
-   |  + Empathy   |
-   +-------+-------+
-           |
-   +-------v-------+
-   |    PROBLEM     |
-   |  + Consequences|
-   +-------+-------+
-           |
-   +-------v-------+
-   |   SOLUTION    |
-   |  + Benefits   |
-   +-------+-------+
-           |
-   +-------v-------+
-   |      WHY       |
-   +---------------+
+```mermaid
+flowchart TD
+    A[Full Story] --> B[Context]
+    B --> C[Target<br>+ Empathy]
+    C --> D[Problem<br>+ Consequences]
+    D --> E[Solution<br>+ Benefits]
+    E --> F[Why]
+    
+    classDef default fill:#f8f9fa,stroke:#333,stroke-width:2px,rx:8,ry:8;
 
 ---
 
