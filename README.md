@@ -69,8 +69,7 @@
 
 ```mermaid
 flowchart TD
-    A[Full Story] --> B[Context]
-    B --> C[Target<br>+ Empathy]
+    B[Context] --> C[Target (your hero)<br>+ Empathy]
     C --> D[Problem<br>+ Consequences]
     D --> E[Solution<br>+ Benefits]
     E --> F[Why]
