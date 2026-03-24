@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'">
+  <title>Lean Storytelling</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#1a1a2e">
+  <meta name="description" content="Structure your business story with Target, Problem, and Solution.">
+</head>
+<body>
+
+  <!-- FORM VIEW -->
+  <main id="form-view">
+    <header class="app-header">
+      <h1>Lean Storytelling</h1>
+      <p class="app-tagline">Build your story — one element at a time.</p>
+    </header>
+
+    <p id="empty-hint" class="notice" role="alert" aria-live="polite" hidden></p>
+    <p id="storage-notice" class="notice notice--warn" role="status" aria-live="polite" hidden>
+      Session storage is unavailable. Your story will not survive a page refresh.
+    </p>
+
+    <form id="story-form" novalidate>
+
+      <fieldset>
+        <legend class="sr-only">Target</legend>
+        <label for="target">Target</label>
+        <p id="target-hint" class="hint">Who is this story for? Describe the specific person or group facing the challenge.</p>
+        <textarea
+          id="target"
+          name="target"
+          rows="4"
+          aria-describedby="target-hint"
+          placeholder="e.g. Product managers at early-stage startups…"
+        ></textarea>
+        <label for="target-status" class="sr-only">Target confidence level</label>
+        <select id="target-status" name="targetStatus" aria-describedby="target-hint">
+          <option value="">— no status —</option>
+          <option value="unsure">Unsure / Assumption / Hypothesis</option>
+          <option value="needs-review">Needs review / Iteration</option>
+          <option value="confirmed">Confirmed / Validated</option>
+        </select>
+      </fieldset>
+
+      <fieldset>
+        <legend class="sr-only">Problem</legend>
+        <label for="problem">Problem</label>
+        <p id="problem-hint" class="hint">What challenge or pain does your Target face? Be specific and concrete.</p>
+        <textarea
+          id="problem"
+          name="problem"
+          rows="4"
+          aria-describedby="problem-hint"
+          placeholder="e.g. They struggle to communicate product value to stakeholders…"
+        ></textarea>
+        <label for="problem-status" class="sr-only">Problem confidence level</label>
+        <select id="problem-status" name="problemStatus" aria-describedby="problem-hint">
+          <option value="">— no status —</option>
+          <option value="unsure">Unsure / Assumption / Hypothesis</option>
+          <option value="needs-review">Needs review / Iteration</option>
+          <option value="confirmed">Confirmed / Validated</option>
+        </select>
+      </fieldset>
+
+      <fieldset>
+        <legend class="sr-only">Solution</legend>
+        <label for="solution">Solution</label>
+        <p id="solution-hint" class="hint">How does your offering address the Problem for the Target? Focus on the outcome.</p>
+        <textarea
+          id="solution"
+          name="solution"
+          rows="4"
+          aria-describedby="solution-hint"
+          placeholder="e.g. Lean Storytelling gives them a simple 3-part framework…"
+        ></textarea>
+        <label for="solution-status" class="sr-only">Solution confidence level</label>
+        <select id="solution-status" name="solutionStatus" aria-describedby="solution-hint">
+          <option value="">— no status —</option>
+          <option value="unsure">Unsure / Assumption / Hypothesis</option>
+          <option value="needs-review">Needs review / Iteration</option>
+          <option value="confirmed">Confirmed / Validated</option>
+        </select>
+      </fieldset>
+
+      <div class="form-actions">
+        <button type="submit" id="submit-btn">View my story</button>
+        <button type="button" id="cancel-btn" hidden>Cancel</button>
+      </div>
+
+    </form>
+  </main>
+
+  <!-- STORY VIEW -->
+  <div id="story-view" hidden>
+    <header class="app-header">
+      <h1>Your Story</h1>
+    </header>
+
+    <article class="story-narrative">
+
+      <section class="story-field" id="view-target">
+        <div class="field-header"><h2>Target</h2></div>
+        <div class="field-content"></div>
+      </section>
+
+      <section class="story-field" id="view-problem">
+        <div class="field-header"><h2>Problem</h2></div>
+        <div class="field-content"></div>
+      </section>
+
+      <section class="story-field" id="view-solution">
+        <div class="field-header"><h2>Solution</h2></div>
+        <div class="field-content"></div>
+      </section>
+
+    </article>
+
+    <section id="consistency-section" class="feedback-section">
+      <h2>Consistency</h2>
+      <ul id="consistency-list"></ul>
+    </section>
+
+    <section id="coaching-section" class="feedback-section">
+      <h2>Coaching</h2>
+      <div id="coaching-target" class="coaching-group" hidden></div>
+      <div id="coaching-problem" class="coaching-group" hidden></div>
+      <div id="coaching-solution" class="coaching-group" hidden></div>
+    </section>
+
+    <div class="story-actions">
+      <button type="button" id="edit-btn">Edit story</button>
+    </div>
+  </div>
+
+  <script src="consistency.js"></script>
+  <script src="prompts.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
