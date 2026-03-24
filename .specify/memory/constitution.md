@@ -1,50 +1,120 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+SYNC IMPACT REPORT
+==================
+Version change: (unversioned template) → 1.0.0
+Modified principles: N/A (initial fill — all placeholders replaced)
+Added sections:
+  - Core Principles (I–V)
+  - Technology Constraints
+  - Development Workflow
+  - Governance
+Removed sections: N/A
+Templates requiring updates:
+  - .specify/templates/plan-template.md ✅ no changes required (structure compatible)
+  - .specify/templates/spec-template.md ✅ no changes required (structure compatible)
+  - .specify/templates/tasks-template.md ✅ no changes required (structure compatible)
+Deferred TODOs: none
+-->
+
+# Lean Storytelling App Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Simplicity First (NON-NEGOTIABLE)
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+The app MUST remain simple and minimalistic at every version increment.
+Dependencies MUST be kept to the strict minimum — each added dependency requires explicit
+justification. The UI MUST avoid visual clutter; one purpose per screen.
+YAGNI (You Aren't Gonna Need It) applies at all levels: no feature is built ahead of its
+designated story-building level (Basic → Detailed → Full → Extension Pack).
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+**Rationale**: The Lean Storytelling methodology is itself lean and minimal. The app must
+embody the same philosophy it teaches.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### II. Lean Storytelling Methodology Fidelity (NON-NEGOTIABLE)
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+All UI copy, field labels, help text, and delivery order MUST match the Lean Storytelling
+playbook exactly as documented in `README.md`.
+The Basic Story exposes exactly three fields: Target, Problem, Solution — in that build order.
+The delivery order (Context → Target → Empathy → Problem → Consequences → Solution →
+Benefits → Why) MUST be respected whenever story output is presented to the user.
+No field renaming, reordering, or omission is permitted without a constitution amendment.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+**Rationale**: Consistency between the playbook and the app is essential for user trust and
+for teaching the methodology correctly.
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+### III. Responsive & Progressive
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+The app MUST be usable on any screen size (mobile-first CSS).
+Core functionality (filling and reading the Basic Story form) MUST work without JavaScript
+as a baseline; JavaScript MAY enhance the experience but MUST NOT be required for the
+primary user journey.
+The app MUST be a valid Progressive Web App (PWA): manifest + service worker for
+offline capability SHOULD be added no later than the first public release.
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+**Rationale**: Business users access tools across devices and unreliable networks.
+Accessibility and reach are non-negotiable for a coaching tool.
+
+### IV. Readability & Maintainability
+
+Source code MUST prioritise clarity over cleverness. Files MUST be small and single-purpose.
+HTML, CSS, and JS MUST be co-located per feature/component where possible.
+No build pipeline or transpilation is required for v1; plain HTML/CSS/JS is the default
+unless a specific need justifies otherwise (and is documented).
+All logic MUST be readable by a developer unfamiliar with the codebase within 5 minutes.
+
+**Rationale**: The project is intended to grow incrementally across many versions.
+Long-term maintainability and onboarding cost matter more than short-term cleverness.
+
+### V. Incremental Story-Level Feature Growth
+
+New features MUST follow the Lean Storytelling progression in strict order:
+1. Basic Story (Target + Problem + Solution) — v1 scope
+2. Detailed Story (+ Empathy + Consequences + Benefits) — future
+3. Full Story (+ Context + Why) — future
+4. Extension Pack (optional elements) — future
+
+No feature from a higher level MAY be implemented before the lower level is complete
+and validated. Each level MUST be independently shippable and testable.
+
+**Rationale**: Mirrors the methodology's own incremental structure and keeps scope
+controlled at every release.
+
+## Technology Constraints
+
+- **Stack**: Vanilla HTML + CSS + JavaScript (no framework required for v1)
+- **Dependencies**: Zero runtime dependencies for v1; any future dependency requires
+  explicit justification against Principle I
+- **Hosting**: Static file hosting compatible (GitHub Pages, Netlify, etc.)
+- **Browser support**: Modern evergreen browsers; no IE support required
+- **Accessibility**: WCAG 2.1 AA compliance MUST be maintained for all form elements
+- **Licensing**: CC BY-SA 4.0 applies to content; code license MUST be declared in repo
+
+## Development Workflow
+
+- Features are specified before implementation using the speckit workflow
+  (spec → plan → tasks → implement)
+- Each story-building level (see Principle V) is treated as a separate feature increment
+- All UI copy changes that affect methodology terminology MUST be reviewed against
+  `README.md` before merging
+- The constitution MUST be reviewed when a new story-building level is started
+- Commits MUST be atomic and scoped to a single task; conventional commit format
+  (`feat:`, `fix:`, `docs:`, `chore:`) is RECOMMENDED
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+This constitution supersedes all other development practices and informal agreements.
+Any amendment requires:
+1. A clear description of what changes and why
+2. A version bump following semantic versioning (MAJOR / MINOR / PATCH as defined below)
+3. An update to this file via the `/speckit.constitution` command
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Versioning policy**:
+- MAJOR: Removal or redefinition of a principle; breaking change to methodology fidelity
+- MINOR: New principle or section added; materially expanded guidance
+- PATCH: Wording clarifications, typo fixes, non-semantic refinements
+
+All pull requests MUST verify compliance with Principles I and II before merge.
+Complexity violations MUST be documented in the plan's Complexity Tracking table.
+
+**Version**: 1.0.0 | **Ratified**: 2026-03-24 | **Last Amended**: 2026-03-24
