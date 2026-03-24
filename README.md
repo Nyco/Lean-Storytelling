@@ -1,8 +1,26 @@
-# Lean Storytelling
+# Lean Storytelling: deliver compelling business stories
 
-**Lean Storytelling**: Shape and pitch your business/product/service
+**Lean Storytelling**:
+- Shape, structure, and refine the story you tell about your business/product/service
+- Deliver and specialise in various formats, and wide ranges of audiences
 
 [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](http://creativecommons.org/licenses/by-sa/4.0/)
+
+## Why "Lean Storytelling"?
+
+So that people communicate and listen, in a standard and proven way, by giving and taking stories, with the same and minimalistic approach
+
+## Who it is indended for
+
+Lean Storytelling is designed for leaders and managers who want to be much more efficient in their communication style
+
+## How this works
+
+Shape and structure your story, given the widely used, but with secret ingredients
+Then deliver your story in any format or context
+
+People know how to "receive" a story, as they are used to "receiving" novels, series, movies...
+But people have difficulties to properly "send" stories by respecting the untold, implicit rules, that humanity has used since forever 
 
 ## What Lean Storytelling Is
 
@@ -24,17 +42,20 @@
 
 **Core Principles:**
 - Start with the basic story ingredients
-- Add details as needed
+- Add details to thicken the plot
+- Polish with the finishing touch
 - Continuously test, learn, and adapt based on feedback
-- Distill your story to its essence to uncover your Unique Value Proposition (UVP)
-- For advanced storytelling, explore dedicated literature
+- Refine your story to its essence
+- For advanced storytelling, use the Extension Pack
 - This method is lean and agile, tailored for business—not generic storytelling
 
 ---
 
-## Story Structure
+## Story building
 
-### Basic Story
+### 1. Basic Story
+
+Setup the mandatory bricks
 
 **Foundational Elements:**
 - **Target**: The user or buyer—the hero of your story, the one who experiences transformation
@@ -43,7 +64,9 @@
 
 ---
 
-### Detailed Story
+### 2. Detailed Story
+
+Enrich with necessary information
 
 **Enhanced Elements:**
 - **Target**
@@ -55,7 +78,9 @@
 
 ---
 
-### Full Story
+### 3. Full Story
+
+Finish your structure with valuable content
 
 **Contextualized Elements:**
 - **Context**: The environment in which the target operates
@@ -65,7 +90,10 @@
 - **Why**: The core motivation or guiding principle behind your story
 
 ---
-### FULL STORY
+
+## Story Delivery
+
+After you have finished structuring your story, deliver it in this specific order:
 
 ```mermaid
 flowchart TD
@@ -97,22 +125,33 @@ flowchart TD
 
 ---
 
-## Summary Table
+# Example story: how I have built Lean Storytelling
 
+## Context
+I work in product organisations at scale, where multiple disciplines collaborate under constant pressure to deliver and perform.
 
-Storytelling Structure
+## Target
+I am a product manager in this rapidly evolving tech industry, operating across both strategy and execution, discovery and delivery.
 
+## Empathy
+I sit at the intersection of many different teams and people — co-constructing with engineering (dev, QA, ops), designers, sales, marketing, and a range of stakeholders. Each speaks their own language and carries their own agenda.
 
-| Core Items | Detail Items | Complete Story |
-|:-----------|:-------------|:----------------|
-|            |              | **Context**: The hero’s environment and circumstances |
-| **Target**: The hero of your story | **Empathy**: What the hero sees, feels, hears, and says | |
-| **Problem**: The challenge the hero faces | **Consequences**: The impact of the problem on the hero’s life | |
-| **Solution**: What you offer | **Benefits**: The advantages your solution delivers | |
-|            |              | **Why**: The guiding light or internal compass of your story |
+## Problem
+On one side, people push one-way communication without seeking feedback or confirmation it is correlty understood. On the other, people misread the information they receive without asking for clarification nor precision. People go fast and do not waste time, they make few effort to listen carefully, to truly sync — nor to speak in a way that others can actually understand.
 
----
+## Consequences
+Teams and leaders stay loosely coupled, rather staying within their own discipline and perspective. The organisation's network loses value, and the full outcome is far completely reached.
 
+## Solution
+I have built Lean Storytelling: a way of structuring a story as a shared language. It takes the form of a simple A4 canvas, accompanied by a workshop, grounded in proven best practices.
+
+## Benefits
+I can now easily and quickly shape stories that can be delivered in many forms — and when properly battle-tested, people don't just receive my story, they sync, align, and resonate with it.
+
+## Why
+Now I have that superpower to unlock the full potential of transdisciplinarity: going further, together, with greater quality.
+
+--- 
 # Q&A / FAQ
 
 ## What is Lean Storytelling ("TopSol Playbook")?
@@ -126,7 +165,8 @@ Lean Storytelling ("TopSol Playbook") is a collection of recipes, templates, and
 This approach is ideal for:
 - Product owners/managers
 - Scrum masters and Agile coaches
-- Designers, engineers
+- Designers
+- Engineers
 - Marketing professionals
 - Sales teams
 - Founders, and C-level executives
@@ -134,16 +174,16 @@ This approach is ideal for:
 
 ---
 
-## Storytelling? What else?
+## Beyond storytelling
 
-Beyond storytelling, Lean Storytelling helps you refine your assumptions and hypothesis, your unique or key value proposition, and/or unique selling point, by iterating on what is convincing.
+Beyond only telling stories, Lean Storytelling helps you refine your assumptions and hypothesis, your unique or key value proposition, and/or unique selling point, by iterating on what is convincing.
 
 ---
 
 ## How is it used? From A to Z?
 
 **Applications:**
-- Describe Baclog, Epics, User Stories in Agile teams (Scrum/Kanban), helping to visualize expected outcomes
+- Describe Backlog, Epics, User Stories in Agile teams (Scrum/Kanban), helping to visualize expected outcomes
 - Test and get quick feedback on solutions or value propositions in customer interviews, supporting Lean Startup and Design Thinking
 - Sell products, features, services or solutions
 
@@ -203,3 +243,17 @@ Yes, for up to 10 people, lasting 1.5 hours.
 Contact me via:
 - [LinkedIn](https://www.linkedin.com/in/nicolasverite/)
 - [Twitter](https://twitter.com/nyconyco)
+
+---
+
+## Can I get the Canvas?
+
+Copy this file in you own drive: "Lean Storytelling Canvas TEMPLATE (please copy, do not edit)"
+
+Ask me for the PDF, ODF, Docx versions
+
+---
+
+## Can an app help me write my own stories?
+
+Yes, this is being planned
