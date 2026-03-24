@@ -27,7 +27,7 @@ story view reflects exactly what was filled. Delivers complete standalone value.
 2. **Given** all three fields are filled, **When** the user submits, **Then** the assembled Basic Story is displayed in full.
 3. **Given** only one or two fields are filled, **When** the user submits, **Then** the story view displays what exists and gently indicates which fields are still empty, without blocking.
 4. **Given** all fields are empty, **When** the user attempts to submit, **Then** the app encourages them to fill at least one field before proceeding.
-5. **Given** a previously saved story exists, **When** the user opens the app, **Then** the form is pre-filled with their last saved story including field statuses.
+5. **Given** the user has filled and submitted a story during the current session, **When** they return to the form via Edit, **Then** the form is pre-filled with their current session content and statuses. No data persists after the browser tab or window is closed.
 
 ---
 
@@ -129,10 +129,10 @@ appears with at least one relevant question or suggestion.
 
 - What happens when all fields are empty and the user tries to submit? The app encourages filling at least one field but does not hard-block.
 - What happens when a user submits a field containing only whitespace? The system MUST treat it as empty.
-- What happens when the user's browser does not support local storage? The story remains usable for the session; a graceful notice informs the user that persistence is unavailable.
+- What happens when the user's browser does not support sessionStorage? The story remains usable for the session using in-memory state; a graceful notice informs the user that within-session persistence is unavailable.
 - What happens when a field contains very long text? The UI MUST remain readable and must not overflow or break layout on any screen size.
 - What happens when a field has a status but no content? The status MUST be ignored or cleared; a status without content has no meaning.
-- What happens when the user clears their browser data? The form resets to empty with no error.
+- What happens when the user closes the tab or window? All story data is discarded — this is by design. No data lingers in the browser after the session ends.
 
 ## Requirements *(mandatory)*
 
@@ -147,9 +147,11 @@ appears with at least one relevant question or suggestion.
 - **FR-007**: The app MUST surface consistency observations about the relationships between filled adjacent field pairs (Target↔Problem, Problem↔Solution) after each submission.
 - **FR-008**: The app MUST display open-ended coaching questions and suggestions after each submission, surfaced from a curated set of pre-written prompts per field. Questions may be weighted or varied based on field content signals and confidence statuses. No external service or AI is required.
 - **FR-009**: The app MUST allow the user to return to the form from the story view, pre-filled with current content and statuses, to review and edit.
-- **FR-010**: The app MUST save the user's story and field statuses locally so they persist across browser sessions.
+- **FR-010**: The app MUST hold the user's story and field statuses in **session-only storage** (sessionStorage or equivalent in-memory state). All data MUST be completely discarded when the browser tab or window is closed. No story data MUST persist across sessions.
+- **FR-014**: The app MUST declare a strict **Content Security Policy** (`default-src 'self'`) that blocks all external resources, inline scripts, and inline styles. All assets MUST be self-contained and served from the same origin.
 - **FR-011**: The app MUST be fully usable on mobile and desktop screen sizes without loss of functionality.
 - **FR-012**: The app MUST be usable offline after the initial page load.
+- **FR-013**: All user-supplied content MUST be rendered as plain text only. No Markdown, HTML, or any markup MUST be interpreted or injected into the DOM, eliminating XSS attack surface without requiring a sanitization library.
 
 ### Key Entities
 
@@ -169,13 +171,26 @@ appears with at least one relevant question or suggestion.
 - **SC-005**: The full iteration loop (fill → view → review → edit → resubmit) is completable in a single browser session with no data loss.
 - **SC-006**: Users actively use field status tags in at least 50% of sessions after the first submission (indicating the feature is discoverable and valued).
 
+## Clarifications
+
+### Session 2026-03-24
+
+- Q: When the assembled story view displays user-typed content, should it be rendered as plain text only, or as formatted text (Markdown / HTML)? → A: Plain text only — no markup interpreted, eliminating XSS surface.
+- Q: What open-source license should the app code be published under? → A: GNU AGPLv3 — copyleft extended to network use; all derivatives and network-served versions must remain open.
+- Q: Which frontend approach should the app use? → A: Vanilla HTML/CSS/JS — no framework, no bundler, zero runtime dependencies.
+- Q: Should the app include any usage analytics, error tracking, or telemetry? → A: None for this version — no tracking, no external calls; analytics may be reconsidered in a future version.
+- Q: Should a Content Security Policy be declared, and should story data persist across browser sessions? → A: Strict CSP (`default-src 'self'`); all story data MUST be deleted when the user closes the app (session-only storage, no cross-session persistence).
+
 ## Assumptions
 
 - The app targets professionals (product managers, leaders, founders) familiar with basic business concepts; no onboarding tutorial is required beyond field hints.
-- No user accounts or authentication are needed; the story is stored locally in the user's browser.
+- No user accounts or authentication are needed; the story is held in session-only storage and discarded when the tab or window is closed.
 - The initial version serves a single story per user — no story history or library view.
 - Coaching prompts appear after story submission, not inline while typing, to preserve focus.
 - The app is a client-side-only web application; no server or backend is required.
 - Story export (PDF, share link, etc.) is out of scope for this version.
 - The visual design system is established from scratch in this feature, consistent with Constitution Principle VI (Elegant & Focused UI/UX) and Principle I (Simplicity First).
 - AI-powered coaching is explicitly out of scope and deferred to a future version; all coaching prompts are curated and pre-written.
+- The app code is published under the **GNU Affero General Public License v3.0 (AGPLv3)**. All third-party dependencies MUST be AGPLv3-compatible. Dependency licenses MUST be audited before inclusion.
+- The app is built with **vanilla HTML, CSS, and JavaScript only** — no framework, no bundler, zero runtime dependencies. This guarantees an empty third-party FOSS audit scope and aligns with Simplicity First (Principle I).
+- The app MUST make **no external network calls** of any kind — no analytics, no telemetry, no CDN-loaded assets. All assets are self-contained. Analytics may be reconsidered in a future version.
