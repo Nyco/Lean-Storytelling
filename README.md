@@ -126,7 +126,11 @@ Finish your structure with valuable content
 
 ## Story Delivery
 
-After you have finished structuring your story, deliver it in this specific order:
+After you have finished structuring your story,...
+
+### Story Sequencing
+
+Deliver it in this specific order:
 
 ```mermaid
 flowchart TD
@@ -140,9 +144,29 @@ flowchart TD
 
     classDef default fill:#f8f9fa,stroke:#333,stroke-width:2px,rx:8,ry:8;
 ```
+
+### Formats
+
+Adapt your stories to various constraints:
+- Text: ASCII, PDF, ODF
+- Images: PNG, JPEG
+- Videos
+- Hybrid: slidedecks, illusrated texts
+
+### Audiences
+
+Specialise story to:
+- Stakeholders
+- Buyers
+- Investors
+
 ---
 
-### Extension Pack
+## Extension Pack
+
+### Extend you story
+
+In case an option is absolutely needed, and you can't live without:
 
 **Optional Additions (use as needed):**
 - **Challenge**: Pose an open question to engage your audience
@@ -155,6 +179,17 @@ flowchart TD
 - **Stages in AARRR**: Acquisition, Activation, Retention, Referral, Revenue
 - **Call to Action**: What you want your audience to do next
 - **Failure**: Share a past failure or setback to build credibility and context
+
+### Complex Story
+
+Use with extreme care:
+- In one story:
+    - Use extension pack
+    - Target multiple personas
+    - Address multiple problems
+- Blend story arcs:
+    - Merge stories with multiple common elements
+    - Cross-over stories in the same timeline/universe
 
 ---
 
