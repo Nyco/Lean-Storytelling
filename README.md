@@ -1,164 +1,219 @@
 # Lean Storytelling
 
-**Lean storytelling**: pitch and share your business or product in one minute
+**Lean Storytelling**: Shape and pitch your business/product/service
 
 [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](http://creativecommons.org/licenses/by-sa/4.0/)
 
-What Lean Storytelling is:
+## What Lean Storytelling Is
 
-* Technique to tell stories easily, using best practices, in order to be understood by your audience
+**Lean Storytelling** is a structured technique for crafting clear, compelling stories—especially for business, product, and service contexts. It draws on best practices to ensure your audience understands, resonates, and remembers your message.
 
-More:
+**Key Characteristics:**
+- A practical set of recipes and templates to shape your story
+- Easy to learn, but challenging to master—requiring practice and iteration
+- Designed for business, product, and feature development (not for screenwriting or novel writing)
+- Applicable from early-stage empathy and problem discovery through to delivery, testing, and communication
+- Helps align teams, reduce friction, and clarify the "why" behind your story
+- Inspired by Lean Canvas, the Monomyth (Hero’s Journey), and The Golden Circle
+- Rooted in Agile, Lean Startup, Design Thinking, UX research, and entrepreneurship
+- Intentionally simple, minimalist, and systemic in approach
 
-* It is a basic set of recipes to help shape a story
-* It is quite easy to read and understand, but difficult to master: practice a lot
-* Fit for a businesses, products and features development (NOT to be a succesful Hollywood screenwriter or awarded novelist)
-* Usable from early stage to delivery phases: empathy, problem discovery, ideation, specs, development, test, deployment, communication, sales, advertising, explainer videos, documentation
-* Keep everyone in sync and aligned across different teams, remove some of the natural friction and misunderstading
-* People will understand the "why", the goal, the guiding light, the north star of you story
-* Inspired by Lean Canvas, Monomyth, and The Golden Circle
-* Roots in Agile, Lean Startup, Design Thinking, UX research, entrepreneurship
-* Very simple and humble, voluntarily minimalistic by design, using the systemic approach
+---
 
-# Overview of the playbook
+## Overview of the playbook
 
-* Tell a story, using the base ingredients
-* If you want/need to detail, use the options
-* Try, learn, get feedback, remix, change, and adapt to your audience, always & continuously
-* If you reduce your story to the bare minimum, just a few words, you might land on your Unique Value Proposition (UVP)
-* If you want to seriously learn strong story telling techniques, read the right litterature
-* This story telling technique differentiates: it is lean and agile, not generic, more dedicated to businesses
+**Core Principles:**
+- Start with the basic story ingredients
+- Add details as needed
+- Continuously test, learn, and adapt based on feedback
+- Distill your story to its essence to uncover your Unique Value Proposition (UVP)
+- For advanced storytelling, explore dedicated literature
+- This method is lean and agile, tailored for business—not generic storytelling
 
-## Basic story
+---
 
-These are the three building blocks, the foundations of a good story:
+## Story Structure
 
-* **Target**: the user or the buyer, the hero of the journey/adventure, the one who will unergo the biggest changes
-* **Problem**: the target's problem or antagonism
-* **Solution**: your solution, but don't say too much about it
+### Basic Story
 
-## Detailed story
+**Foundational Elements:**
+- **Target**: The user or buyer—the hero of your story, the one who experiences transformation
+- **Problem**: The challenge or antagonism your target faces
+- **Solution**: Your offering (keep it concise; avoid over-explaining)
 
-Add the necessary details, to re-inforce the story:
+---
 
-* Target
-    * **Empathy**: what the target sees, feels, hears, says 
-* Problem
-    * **Consequences**: the impact of the problem on the target's daily life
-* Solution
-    * **Benefits**: the benefits that your solution offers
+### Detailed Story
 
-## Full story
+**Enhanced Elements:**
+- **Target**
+  - **Empathy**: What the target sees, feels, hears, and says
+- **Problem**
+  - **Consequences**: How the problem impacts the target’s daily life, the pain that is felt
+- **Solution**
+  - **Benefits**: The tangible advantages your solution provides
 
-Add a contextual start, and an inspirationnal end:
+---
 
-* **Context**: in what landscape the target evolves
-* Target
-    * Empathy
-* Problem
-    * Consequences
-* Solution
-    * Benefits
-* **Why**: the main motivator behind the story
+### Full Story
 
-## Extension pack
+**Contextualized Elements:**
+- **Context**: The environment in which the target operates
+- **Target** (Empathy)
+- **Problem** (Consequences)
+- **Solution** (Benefits)
+- **Why**: The core motivation or guiding principle behind your story
 
-Add any item, wherever you feel:
-* Challenge of the audience, a open question
-* Quote, in order to validate the pain point or the benefits
-* Alternatives, unsatisfying solutions to the hero's problem
-* Competition to the solution, but yours is better
-* Unfair advantage of your solution
-* Warnings
-* Self-benefits on your business/product
-* Stages in AARRR
-* Call To Action
-* A failure, a failed attempt before the solution is found
+---
 
-## Summary
++---------------------+
+|     FULL STORY      |
++----------+----------+
+           |
+   +-------v-------+
+   |    CONTEXT    |
+   +-------+-------+
+           |
+   +-------v-------+
+   |    TARGET     |
+   |  + Empathy   |
+   +-------+-------+
+           |
+   +-------v-------+
+   |    PROBLEM     |
+   |  + Consequences|
+   +-------+-------+
+           |
+   +-------v-------+
+   |   SOLUTION    |
+   |  + Benefits   |
+   +-------+-------+
+           |
+   +-------v-------+
+   |      WHY       |
+   +---------------+
 
-In a simple tables, this gives:
+---
 
-| Core items | Detail items | Complete story |
-|:--:|:--|:--|
-| | | **Context**: where and when, the surroundings of the hero| | 
-| **Target**, the hero, who it is about |
-|  | **Empathy**, what the hero sees and feels |
-| **Problem** the hero faces, that slows down (NOT the absence of YOUR solution) | |
-| | **Consequences** of the problem  |
-| **Solution**, what you offer, and how |  |
-| | **Benefits**, the advantages your solution delivers  |
-| | | **Why**, he guiding light, your internal compass | |
+### Extension Pack
+
+**Optional Additions (use as needed):**
+- **Challenge**: Pose an open question to engage your audience
+- **Quote**: Validate the problem or benefits with a relevant quote
+- **Alternatives**: Highlight unsatisfactory solutions the hero has tried
+- **Competition**: Acknowledge competitors, but emphasize why your solution is superior
+- **Unfair Advantage**: What makes your solution uniquely effective, and difficult to imitate
+- **Warnings**: Potential pitfalls or risks
+- **Self-Benefits**: How you also benefit from the solution
+- **Stages in AARRR**: Acquisition, Activation, Retention, Referral, Revenue
+- **Call to Action**: What you want your audience to do next
+- **Failure**: Share a past failure or setback to build credibility and context
+
+---
+
+## Summary Table
 
 
-# Q&A, FAQ
+Storytelling Structure
+
+
+| Core Items | Detail Items | Complete Story |
+|:-----------|:-------------|:----------------|
+|            |              | **Context**: The hero’s environment and circumstances |
+| **Target**: The hero of your story | **Empathy**: What the hero sees, feels, hears, and says | |
+| **Problem**: The challenge the hero faces | **Consequences**: The impact of the problem on the hero’s life | |
+| **Solution**: What you offer | **Benefits**: The advantages your solution delivers | |
+|            |              | **Why**: The guiding light or internal compass of your story |
+
+---
+
+# Q&A / FAQ
 
 ## What is Lean Storytelling ("TopSol Playbook")?
 
-Lean Storytelling ("TopSol Playbook") is a set of recipes, templates and good practices, to help you shape your story telling for businesses and products. It is a guidance
+Lean Storytelling ("TopSol Playbook") is a collection of recipes, templates, and best practices designed to help you craft effective stories for business and product contexts. It serves as a practical guide, not a rigid framework.
+
+---
 
 ## Who is it for?
 
-It is aimed at business-oriented people, like product owners/managers, scrum masters, agile coaches, designers, engineers, marketing people, sales people, founders and C-levels CxO.
+This approach is ideal for:
+- Product owners/managers
+- Scrum masters and Agile coaches
+- Designers, engineers
+- Marketing professionals
+- Sales teams
+- Founders, and C-level executives
+- Leaders and Managers
 
-## Story telling, you say? What else?
+---
 
-Lean Storytelling ("TopSol Playbook") may help you tell stories, but also may help you shape your {unique|key} value proposition.
+## Storytelling? What else?
+
+Beyond storytelling, Lean Storytelling helps you refine your assumptions and hypothesis, your unique or key value proposition, and/or unique selling point, by iterating on what is convincing.
+
+---
 
 ## How is it used? From A to Z?
 
-It can be used to:
-* describe a User Story or Epic, within an Agile team, using Scrum or Kanban, allows to project and better picture the expected outcome
-* in a customer interview, test a solution, or a {unique|key} value proposition, validate or invalidate, persist or pivot, useful for Lean Startup and Design Thinking approaches
-* sell a solution, product, or feature
+**Applications:**
+- Describe Baclog, Epics, User Stories in Agile teams (Scrum/Kanban), helping to visualize expected outcomes
+- Test and get quick feedback on solutions or value propositions in customer interviews, supporting Lean Startup and Design Thinking
+- Sell products, features, services or solutions
 
-Lean Storytelling helps you synchronise and align all the people involed in the User Story factory/pipeline.
+**Benefit:** It synchronizes and aligns people involved in the User Story pipeline.
+
+---
 
 ## How can I deliver the story?
 
-A well-shaped story can be delivered in many ways:
-* spoken, with or without body language, like a podcast, ad, videoconference, vidéo, meetup, speech, public speaking
-* written, in a blog post, slide deck, ticket, social media
+A well-crafted story can be delivered in various formats:
+- **Spoken**: Podcasts, ads, videoconferences, videos, meetups, speeches, public speaking
+- **Written**: Blog posts, slide decks, tickets, social media
+- **Visual**: Images, videos, schemas, drawings, infographies
+
+---
 
 ## What does "TopSol Playbook" stand for?
 
-* **Playbook**, because I didn't want another "framework" ;-) and to underline it is not an advanced story telling technique
-* **TopSol**, because To-P-Sol:
-  * **To**: Target, the people and personas you are targetting with your product or service
-  * **P**: Problem, the problem they face and suffer from, that is worth fixing
-  * **Sol**: Solution, the solution that you bring to your targets
+- **Playbook**: Emphasizes practicality and avoids the term "framework"; it’s not an advanced storytelling technique.
+- **TopSol**: An acronym for the core elements:
+  - **To**: Target (the people or personas you’re addressing)
+  - **P**: Problem (the challenge they face)
+  - **Sol**: Solution (what you offer)
+
+---
 
 ## Where does it come from?
 
-Standing on shoulders of giants who stand on shoulders of giants, Lean Storytelling has its roots in:
-* the Lean Canvas approach by Ash Maurya, I highly recommend this free online course: https://www.udemy.com/lean-canvas-course/ by Ash Maurya.
-* Monomyth or "Hero's journey": https://en.wikipedia.org/wiki/Hero's_journey
-* The Golden Circle ("Why How What") by Simon Sinek: https://www.ted.com/talks/simon_sinek_how_great_leaders_inspire_action
+Lean Storytelling builds on established methodologies:
+- **Lean Canvas** by Ash Maurya ([free online course](https://www.udemy.com/lean-canvas-course/))
+- **Monomyth (Hero’s Journey)** ([Wikipedia](https://en.wikipedia.org/wiki/Hero%27s_journey))
+- **The Golden Circle** ("Why How What") by Simon Sinek ([TED Talk](https://www.ted.com/talks/simon_sinek_how_great_leaders_inspire_action))
+
+---
 
 ## What can I do to help?
 
-* Star this repository
-* Share this in your networks
-* Ask questions in the [issues](https://github.com/Nyco/TopSol-Playbook/issues)
-* Suggest modifications
-* Submit a patch or a merge request
-* Share your knowledge and experience
+- Star this repository
+- Share within your networks
+- Ask questions or suggest improvements via [issues](https://github.com/Nyco/TopSol-Playbook/issues)
+- Submit patches or merge requests
+- Share your knowledge and experience
+
+---
 
 ## Can I use, share, and modify Lean Storytelling?
 
-Lean Storytelling is licensed under the Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0).
+Yes! Lean Storytelling is licensed under **Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)**. You are free to:
+- **Share**: Copy and redistribute in any medium or format
+- **Adapt**: Remix, transform, and build upon the material for any purpose, including commercially
 
-You are free to:
+---
 
-* **Share** — copy and redistribute the material in any medium or format
-* **Adapt** — remix, transform, and build upon the material
-for any purpose, even commercially.
+## Can you organize a workshop?
 
-## Can you organise a workshop?
-
-Yes, for 10 persons max, during 1h30.
-
-Just ping me on:
-* https://www.linkedin.com/in/nicolasverite/
-* https://twitter.com/nyconyco
-
+Yes, for up to 10 people, lasting 1.5 hours.
+Contact me via:
+- [LinkedIn](https://www.linkedin.com/in/nicolasverite/)
+- [Twitter](https://twitter.com/nyconyco)
