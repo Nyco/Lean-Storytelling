@@ -69,14 +69,16 @@
 
 ```mermaid
 flowchart TD
-    B[Context] --> C[Target (your hero)<br>+ Empathy]
-    C --> D[Problem<br>+ Consequences]
-    D --> E[Solution<br>+ Benefits]
-    E --> F[Why]
-    
+    Context{{Context}}-->Target["`**Target**`"]
+    Target-->Empathy([Empathy])
+    Empathy-->Problem["`**Problem**`"]
+    Problem-->Consequences([Consequences])
+    Consequences-->Solution["`**Solution**`"]
+    Solution-->Benefits([Benefits])
+    Benefits-->Why{{Why}}
+
     classDef default fill:#f8f9fa,stroke:#333,stroke-width:2px,rx:8,ry:8;
 ```
-
 ---
 
 ### Extension Pack
