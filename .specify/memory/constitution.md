@@ -1,18 +1,15 @@
 <!--
 SYNC IMPACT REPORT
 ==================
-Version change: (unversioned template) → 1.0.0
-Modified principles: N/A (initial fill — all placeholders replaced)
+Version change: 1.0.0 → 1.1.0
+Modified principles: none
 Added sections:
-  - Core Principles (I–V)
-  - Technology Constraints
-  - Development Workflow
-  - Governance
+  - Principle VI. Elegant & Focused UI/UX (new)
 Removed sections: N/A
 Templates requiring updates:
-  - .specify/templates/plan-template.md ✅ no changes required (structure compatible)
-  - .specify/templates/spec-template.md ✅ no changes required (structure compatible)
-  - .specify/templates/tasks-template.md ✅ no changes required (structure compatible)
+  - .specify/templates/plan-template.md ✅ no changes required
+  - .specify/templates/spec-template.md ✅ no changes required
+  - .specify/templates/tasks-template.md ✅ no changes required
 Deferred TODOs: none
 -->
 
@@ -80,6 +77,27 @@ and validated. Each level MUST be independently shippable and testable.
 **Rationale**: Mirrors the methodology's own incremental structure and keeps scope
 controlled at every release.
 
+### VI. Elegant & Focused UI/UX (NON-NEGOTIABLE)
+
+The app MUST look and feel polished, modern, and elegant — not merely functional.
+No default browser styles may be left unstyled; every visual element MUST be a deliberate
+design decision.
+
+Design MUST be focused: each screen has exactly one primary action, one focal point.
+Visual noise, decoration for its own sake, and competing calls-to-action are forbidden.
+
+Typography, spacing, and colour MUST convey quality and calm confidence — consistent with
+the professional audience (leaders, managers, product people) the methodology targets.
+
+Transitions and micro-interactions SHOULD be smooth and intentional; they MUST serve
+clarity and flow, never distraction.
+
+Elegance and simplicity (Principle I) are complementary, not in conflict. The goal is
+refined minimalism: every element present is beautiful; nothing unnecessary is present.
+
+**Rationale**: A coaching tool for professionals signals its own credibility through its
+craft. A poorly designed UI undermines trust in the methodology it teaches.
+
 ## Technology Constraints
 
 - **Stack**: Vanilla HTML + CSS + JavaScript (no framework required for v1)
@@ -97,6 +115,7 @@ controlled at every release.
 - Each story-building level (see Principle V) is treated as a separate feature increment
 - All UI copy changes that affect methodology terminology MUST be reviewed against
   `README.md` before merging
+- All visual design decisions MUST be reviewed against Principle VI before merging
 - The constitution MUST be reviewed when a new story-building level is started
 - Commits MUST be atomic and scoped to a single task; conventional commit format
   (`feat:`, `fix:`, `docs:`, `chore:`) is RECOMMENDED
@@ -114,7 +133,7 @@ Any amendment requires:
 - MINOR: New principle or section added; materially expanded guidance
 - PATCH: Wording clarifications, typo fixes, non-semantic refinements
 
-All pull requests MUST verify compliance with Principles I and II before merge.
+All pull requests MUST verify compliance with Principles I, II, and VI before merge.
 Complexity violations MUST be documented in the plan's Complexity Tracking table.
 
-**Version**: 1.0.0 | **Ratified**: 2026-03-24 | **Last Amended**: 2026-03-24
+**Version**: 1.1.0 | **Ratified**: 2026-03-24 | **Last Amended**: 2026-03-24
