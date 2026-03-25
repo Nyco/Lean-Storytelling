@@ -146,6 +146,28 @@
 
 ---
 
+## Phase 9: UX Redesign — Wave Navigation, Split Screen & Design Refresh
+
+**Purpose**: Implement sticky wave navigation bar, two-column layout, right-pane story preview, per-wave progress bars, design color refresh, and fake-door placeholders for consistency check and coaching. Addresses FR-015–FR-019 and the updated FR-011.
+
+**Dependencies**: Phases 1–8 complete. All new tasks can be executed in dependency order within this phase.
+
+- [x] T049 Add sticky wave navigation bar HTML to `index.html` — a `<nav class="wave-nav">` placed below the app title containing three `<div class="wave-card">` elements: Wave 1 `data-wave="1"` with title "Basic Story" and subtitle "Setup the mandatory and fundamental building blocks"; Wave 2 `data-wave="2"` with title "Detailed Story" and subtitle "Enrich with depth and connection" and `aria-disabled="true"`; Wave 3 `data-wave="3"` with title "Full Story" and subtitle "Add the finishing touch" and `aria-disabled="true"`; each card contains an empty `<div class="wave-progress">` at the bottom; Wave 1 gets class `wave-card--active`, Wave 2 and 3 get class `wave-card--inactive`
+- [x] T050 [P] Style wave navigation bar in `style.css` — `.wave-nav` sticky (position: sticky; top: 0; z-index: 100); flex row, gap, padding, background white/near-white, border-bottom; `.wave-card` flex-1, padding, border-radius, cursor default; `.wave-card--active` blue/green accent border-top (3px), slightly elevated background tint; `.wave-card--inactive` opacity 0.45, cursor not-allowed, pointer-events none; wave title bold, subtitle small muted; overall aesthetic: zen, minimal, clean
+- [x] T051 Add wave-specific progress bar step indicators HTML inside each `.wave-progress` in `index.html` — Wave 1: three `<span class="wave-step" data-step="target|problem|solution">` with text labels "Target", "Problem", "Solution"; Wave 2: three `<span class="wave-step wave-step--inactive">` "Empathy", "Consequences", "Benefits"; Wave 3: two `<span class="wave-step wave-step--inactive">` "Context", "Why"; each step span will receive class `wave-step--filled` via JS when the corresponding field has content
+- [x] T052 [P] Style wave progress step indicators in `style.css` — `.wave-progress` flex row, gap small, margin-top small; `.wave-step` inline-block, padding 2px 6px, font-size 0.7rem, border-radius 99px, background light-neutral, color muted; `.wave-step--filled` background green-subtle, color green-dark; `.wave-step--inactive` opacity 0.4; smooth transition on fill state
+- [x] T053 Restructure `index.html` for two-column layout — wrap the entire content area in `<div class="app-container">`; place `<div class="left-pane">` containing `#form-view`; place `<div class="right-pane">` containing a new `#story-preview` section; the existing `#story-view` toggle section is kept but hidden by default (progressive enhancement — right pane replaces its role on large screens)
+- [x] T054 [P] Two-column CSS layout in `style.css` — `.app-container` CSS Grid with `grid-template-columns: 1fr 1fr`; column-gap; height: `calc(100vh - wave-nav-height)`; overflow-y auto on each pane; layout applies at all times (large screen only — no responsive breakpoint needed per FR-011 scope restriction); `.left-pane` and `.right-pane` padding, scroll independently
+- [x] T055 Add right pane story preview HTML to `index.html` inside `#story-preview` — `<h2>Your Story</h2>`; three `<article class="preview-field">` blocks each with `<h3>` field name and `<div class="preview-content">` (empty state: `<p class="preview-placeholder-text">Your story will appear here — fill the form on the left to get started.</p>`); below story blocks: two `<section class="preview-placeholder preview-placeholder--disabled">` — one for "Consistency Check" with placeholder copy "Consistency analysis coming soon", one for "Coaching" with placeholder copy "Coaching questions coming soon"; both sections include a `<span class="coming-soon-badge">Coming soon</span>`
+- [x] T056 [P] Style right pane story preview in `style.css` — `#story-preview` padding; `.preview-field` margin-bottom, padding-bottom, border-bottom light; `.preview-field h3` small-caps or subdued label style; `.preview-content` body text, line-height; `.preview-placeholder-text` italic, muted color; `.preview-placeholder--disabled` opacity 0.45, background light-neutral tint, border-radius, padding, margin-top; `.coming-soon-badge` inline-block, font-size 0.7rem, border-radius, border 1px dashed muted, padding 2px 8px, color muted
+- [x] T057 Implement `updateStoryPreview(story)` in `app.js` — for each field (target, problem, solution): if content non-empty set `.preview-content` textContent; else restore placeholder text; call `updateStoryPreview(loadSession())` on DOMContentLoaded; call `updateStoryPreview(story)` at the end of `handleSubmit()` after `renderStoryView()`
+- [x] T058 Implement Wave 1 progress bar step update in `app.js` — `updateWaveProgress()` reads current textarea values; for each step span (`[data-step="target|problem|solution"]`) toggles class `wave-step--filled` if the corresponding textarea has non-empty trimmed content; attach to each textarea `input` event and call once on DOMContentLoaded
+- [x] T059 [P] Refresh color design tokens in `style.css` — replace or extend existing `--color-*` custom properties with subtle blue variants (`--color-blue-50` through `--color-blue-700`) and green variants (`--color-green-50` through `--color-green-700`); apply to: active wave card accent, wave step filled state, button primary color, status badge confirmed color, consistency obs-connected color, focus ring; keep backgrounds near-white/light neutral; verify all text contrast ratios meet WCAG 2.1 AA (≥ 4.5:1)
+
+**Checkpoint**: Wave nav bar visible and sticky. Wave 1 active, Wave 2/3 visually disabled. Progress step indicators update as user fills fields. Two-column layout shows form left, story preview right. Right pane updates on submit. Consistency check and coaching are visible as inactive placeholders. Color tokens refreshed across all components.
+
+---
+
 ## Dependencies & Execution Order
 
 ### Phase Dependencies
@@ -226,6 +248,7 @@ Each phase is independently deployable and testable before the next begins.
 | Phase 6: US4 Edit Loop (P4) | T030–T034 | 5 tasks |
 | Phase 7: US5 Coaching (P5) | T035–T039 | 5 tasks |
 | Phase 8: Polish & QA | T040–T048 | 9 tasks |
-| **Total** | | **48 tasks** |
+| Phase 9: UX Redesign | T049–T059 | 11 tasks |
+| **Total** | | **59 tasks** |
 
 **MVP scope**: T001–T018 (18 tasks, Phases 1–3)

@@ -133,6 +133,7 @@ appears with at least one relevant question or suggestion.
 - What happens when a field contains very long text? The UI MUST remain readable and must not overflow or break layout on any screen size.
 - What happens when a field has a status but no content? The status MUST be ignored or cleared; a status without content has no meaning.
 - What happens when the user closes the tab or window? All story data is discarded — this is by design. No data lingers in the browser after the session ends.
+- What happens when the right pane "Your Story" is displayed before any story has been submitted? The right pane MUST show instructional placeholder text (e.g., "Your story will appear here — fill the form on the left to get started") rather than an empty or broken layout.
 
 ## Requirements *(mandatory)*
 
@@ -149,7 +150,12 @@ appears with at least one relevant question or suggestion.
 - **FR-009**: The app MUST allow the user to return to the form from the story view, pre-filled with current content and statuses, to review and edit.
 - **FR-010**: The app MUST hold the user's story and field statuses in **session-only storage** (sessionStorage or equivalent in-memory state). All data MUST be completely discarded when the browser tab or window is closed. No story data MUST persist across sessions.
 - **FR-014**: The app MUST declare a strict **Content Security Policy** (`default-src 'self'`) that blocks all external resources, inline scripts, and inline styles. All assets MUST be self-contained and served from the same origin.
-- **FR-011**: The app MUST be fully usable on mobile and desktop screen sizes without loss of functionality.
+- **FR-015**: The app MUST display a sticky wave navigation bar below the app title containing three wave cards: Wave 1 "Basic Story" (active), Wave 2 "Detailed Story" (inactive), and Wave 3 "Full Story" (inactive). Wave 2 and Wave 3 MUST be visually disabled and non-interactive.
+- **FR-016**: Each wave card MUST contain a mini progress bar at the bottom showing wave-specific steps. Wave 1 steps: Target, Problem, Solution. Wave 2 steps: Empathy, Consequences, Benefits. Wave 3 steps: Context, Why. The Wave 1 progress bar MUST reflect the current form completion state (which steps have content). Wave 2 and Wave 3 progress bars are static and inactive.
+- **FR-017**: On large screens (viewport width ≥ 768px), the app MUST render a two-column layout: the left pane contains the input form; the right pane displays the story preview. Both panes MUST be simultaneously visible.
+- **FR-018**: The right pane MUST display a "Your Story" section with Target, Problem, and Solution content blocks. Below the story blocks, the right pane MUST include placeholder sections for "Consistency Check" and "Coaching" in a visually inactive/disabled state (fake door — no functionality, placeholder instructional text only). These sections will be activated in a future iteration.
+- **FR-019**: The design system MUST use subtle shades of blue and green as its primary accent palette. The visual aesthetic MUST be zen, pure, minimalistic, and focused.
+- **FR-011**: The app MUST be fully usable on large screens (desktop, laptop, tablet — viewport width ≥ 768px) without loss of functionality. Smartphone/narrow-viewport layout support is explicitly out of scope for this version.
 - **FR-012**: The app MUST be usable offline after the initial page load.
 - **FR-013**: All user-supplied content MUST be rendered as plain text only. No Markdown, HTML, or any markup MUST be interpreted or injected into the DOM, eliminating XSS attack surface without requiring a sanitization library.
 
@@ -194,3 +200,14 @@ appears with at least one relevant question or suggestion.
 - The app code is published under the **GNU Affero General Public License v3.0 (AGPLv3)**. All third-party dependencies MUST be AGPLv3-compatible. Dependency licenses MUST be audited before inclusion.
 - The app is built with **vanilla HTML, CSS, and JavaScript only** — no framework, no bundler, zero runtime dependencies. This guarantees an empty third-party FOSS audit scope and aligns with Simplicity First (Principle I).
 - The app MUST make **no external network calls** of any kind — no analytics, no telemetry, no CDN-loaded assets. All assets are self-contained. Analytics may be reconsidered in a future version.
+
+## Iterations
+
+### Iteration 2026-03-25: Wave Navigation, Split Screen & Design Refresh
+
+**Change**: Add sticky wave navigation bar with per-wave progress bars, split the screen into a two-column layout (form left, story preview right), refresh the design system with a subtle blue/green palette, and add inactive fake-door placeholders for consistency check and coaching in the right pane.
+**Scope**: Feature-wide
+**Artifacts updated**: spec.md, plan.md, tasks.md
+**Tasks added**: T049–T059
+**Tasks removed**: —
+**Tasks marked complete**: —

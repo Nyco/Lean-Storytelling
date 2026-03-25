@@ -5,32 +5,49 @@
 
 /* --- Custom Properties (Design Tokens) -------------------- */
 :root {
-  /* Colours */
-  --color-bg:          #f7f7f5;
+  /* Colours — core */
+  --color-bg:          #f7f8fa;
   --color-surface:     #ffffff;
-  --color-border:      #e0ddd8;
+  --color-border:      #e2e6ed;
   --color-text:        #1a1a1a;
-  --color-text-muted:  #6b6b6b;
-  --color-primary:     #1a1a2e;
-  --color-primary-hover: #2d2d52;
-  --color-accent:      #4f46e5;
-  --color-accent-hover:#4338ca;
+  --color-text-muted:  #6b7280;
+  --color-primary:     #1e3a5f;
+  --color-primary-hover: #163050;
+  --color-accent:      #2563eb;
+  --color-accent-hover: #1d4ed8;
+
+  /* Blue palette (subtle) */
+  --color-blue-50:  #eff6ff;
+  --color-blue-100: #dbeafe;
+  --color-blue-400: #60a5fa;
+  --color-blue-500: #3b82f6;
+  --color-blue-600: #2563eb;
+  --color-blue-700: #1d4ed8;
+  --color-blue-900: #1e3a5f;
+
+  /* Green palette (subtle) */
+  --color-green-50:  #f0fdf4;
+  --color-green-100: #dcfce7;
+  --color-green-400: #4ade80;
+  --color-green-500: #22c55e;
+  --color-green-600: #16a34a;
+  --color-green-700: #15803d;
 
   /* Status badge colours */
   --color-unsure-bg:      #fef3c7;
   --color-unsure-text:    #92400e;
   --color-unsure-border:  #fbbf24;
-  --color-review-bg:      #dbeafe;
+  --color-review-bg:      var(--color-blue-100);
   --color-review-text:    #1e40af;
-  --color-review-border:  #60a5fa;
-  --color-confirmed-bg:   #d1fae5;
-  --color-confirmed-text: #065f46;
-  --color-confirmed-border:#34d399;
+  --color-review-border:  var(--color-blue-400);
+  --color-confirmed-bg:   var(--color-green-100);
+  --color-confirmed-text: var(--color-green-700);
+  --color-confirmed-border: var(--color-green-500);
 
   /* Consistency observation colours */
-  --color-connected-border: #34d399;
+  --color-connected-border:  var(--color-green-500);
   --color-disconnect-border: #fbbf24;
-  --color-tooshort-border:  #d1d5db;
+  --color-tooshort-border:   #d1d5db;
   --color-incomplete-border: #e5e7eb;
 
   /* Spacing (4 px base) */
@@ -74,6 +91,7 @@
 html {
   font-size: 16px;
   -webkit-text-size-adjust: 100%;
+  height: 100%;
 }
 
 body {
@@ -82,8 +100,11 @@ body {
   line-height: var(--line-height-base);
   color: var(--color-text);
   background-color: var(--color-bg);
-  min-height: 100dvh;
-  padding: var(--space-5) var(--space-4);
+  height: 100dvh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
 }
 
 /* --- Screen-reader only utility --------------------------- */
@@ -96,24 +117,19 @@ body {
   white-space: nowrap;
 }
 
-/* --- App Layout ------------------------------------------- */
-#form-view,
-#story-view {
-  max-width: 640px;
-  margin: 0 auto;
-  padding-bottom: var(--space-8);
-}
-
+/* --- Global Layout ---------------------------------------- */
 [hidden] { display: none !important; }
 
-/* --- Header ----------------------------------------------- */
+/* --- App Header ------------------------------------------- */
 .app-header {
-  margin-bottom: var(--space-6);
-  padding-top: var(--space-5);
+  flex-shrink: 0;
+  padding: var(--space-4) var(--space-6);
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .app-header h1 {
-  font-size: var(--font-size-2xl);
+  font-size: var(--font-size-xl);
   font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--color-primary);
@@ -121,9 +137,42 @@ body {
 }
 
 .app-tagline {
-  margin-top: var(--space-1);
-  font-size: var(--font-size-sm);
+  margin-top: 2px;
+  font-size: var(--font-size-xs);
   color: var(--color-text-muted);
+}
+
+/* --- Two-Column App Container (T054) ---------------------- */
+.app-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.left-pane {
+  overflow-y: auto;
+  padding: var(--space-6);
+  border-right: 1.5px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.right-pane {
+  overflow-y: auto;
+  padding: var(--space-6);
+  background: var(--color-bg);
+}
+
+#form-view {
+  max-width: 560px;
+}
+
+/* Legacy story view — hidden in two-column layout */
+#story-view {
+  padding: var(--space-6);
+  max-width: 640px;
+  margin: 0 auto;
 }
 
 /* --- Notice / Alert --------------------------------------- */
@@ -189,7 +238,7 @@ textarea {
 textarea:focus {
   outline: none;
   border-color: var(--color-accent);
-  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 }
 
 textarea::placeholder {
@@ -219,7 +268,7 @@ select {
 select:focus {
   outline: none;
   border-color: var(--color-accent);
-  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 }
 
 /* --- Buttons ---------------------------------------------- */
@@ -252,7 +301,7 @@ button:active {
 
 #submit-btn:hover {
   background: var(--color-primary-hover);
-  box-shadow: 0 4px 12px rgba(26, 26, 46, 0.25);
+  box-shadow: 0 4px 12px rgba(30, 58, 95, 0.25);
 }
 
 #cancel-btn {
@@ -448,8 +497,8 @@ button:active {
   font-style: italic;
   color: var(--color-text);
   padding: var(--space-3) var(--space-4);
-  border-left: 3px solid var(--color-accent);
-  background: var(--color-bg);
+  border-left: 3px solid var(--color-blue-400);
+  background: var(--color-blue-50);
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
 }
 
@@ -461,45 +510,229 @@ button:active {
 }
 
 /* --- View Transition -------------------------------------- */
-#form-view,
-#story-view {
+.left-pane,
+.right-pane {
   animation: fadeIn var(--transition-base) ease;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(6px); }
+  from { opacity: 0; transform: translateY(4px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* --- Responsive ------------------------------------------- */
-@media (min-width: 480px) {
-  body {
-    padding: var(--space-6) var(--space-5);
-  }
-
-  .app-header h1 {
-    font-size: 2.25rem;
-  }
-
-  #submit-btn {
-    width: auto;
-    min-width: 200px;
-  }
-
-  .form-actions {
-    flex-direction: row;
-    align-items: center;
-  }
-
-  #cancel-btn {
-    width: auto;
-    margin-top: 0;
-    margin-left: var(--space-3);
-  }
+/* --- Form actions layout ---------------------------------- */
+.form-actions {
+  flex-direction: row;
+  align-items: center;
 }
 
-@media (min-width: 768px) {
-  body {
-    padding: var(--space-7) var(--space-6);
-  }
+#submit-btn {
+  min-width: 180px;
+}
+
+#cancel-btn {
+  margin-top: 0;
+  margin-left: var(--space-3);
+  width: auto;
+}
+
+/* ============================================================
+   WAVE NAVIGATION BAR (T050)
+   ============================================================ */
+
+.wave-nav {
+  display: flex;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-6);
+  background: var(--color-surface);
+  border-bottom: 1.5px solid var(--color-border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  flex-shrink: 0;
+}
+
+.wave-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.wave-card--active {
+  border-color: var(--color-blue-500);
+  border-top: 3px solid var(--color-blue-600);
+  background: var(--color-blue-50);
+}
+
+.wave-card--inactive {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.wave-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.wave-label {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.wave-card--active .wave-label {
+  color: var(--color-blue-600);
+}
+
+.wave-title {
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: var(--line-height-tight);
+}
+
+.wave-subtitle {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+/* ============================================================
+   WAVE PROGRESS STEPS (T052)
+   ============================================================ */
+
+.wave-progress {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  margin-top: var(--space-1);
+}
+
+.wave-step {
+  font-size: 0.7rem;
+  font-weight: 500;
+  padding: 2px var(--space-2);
+  border-radius: 99px;
+  background: var(--color-bg);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+  transition: background-color var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.wave-step--filled {
+  background: var(--color-green-100);
+  color: var(--color-green-700);
+  border-color: var(--color-green-500);
+}
+
+.wave-step--inactive {
+  opacity: 0.5;
+}
+
+/* ============================================================
+   RIGHT PANE — STORY PREVIEW (T056)
+   ============================================================ */
+
+#story-preview {
+  max-width: 540px;
+}
+
+.preview-heading {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+  margin-bottom: var(--space-5);
+}
+
+.preview-narrative {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+
+.preview-field {
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4) var(--space-5);
+}
+
+.preview-field-label {
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-3);
+}
+
+.preview-content {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  color: var(--color-text);
+  white-space: pre-wrap;
+  word-break: break-word;
+  min-height: 1.5rem;
+}
+
+.preview-placeholder-text {
+  font-style: italic;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+/* Fake door placeholder sections */
+.preview-placeholder--disabled {
+  background: var(--color-surface);
+  border: 1.5px dashed var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-5);
+  margin-bottom: var(--space-3);
+  opacity: 0.55;
+}
+
+.preview-placeholder-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-2);
+}
+
+.preview-placeholder-header h3 {
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.preview-placeholder-body {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.coming-soon-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 2px var(--space-2);
+  border-radius: 99px;
+  border: 1px dashed var(--color-text-muted);
+  color: var(--color-text-muted);
+  flex-shrink: 0;
 }

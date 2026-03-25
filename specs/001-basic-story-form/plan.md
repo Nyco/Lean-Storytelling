@@ -23,6 +23,7 @@ all within one browser session, no server, no tracking, no external calls.
 **Performance Goals**: Interactive < 2 s on standard mobile connection (SC-003); FCP < 1 s
 **Constraints**: Zero external network calls · strict CSP (`default-src 'self'`) via `<meta>` tag · AGPLv3 · no framework · WCAG 2.1 AA on all form elements · offline-capable after first load
 **Scale/Scope**: Single user · single story per session · 3 fields (Basic Story only, v1)
+**Layout**: Two-column split screen on large screens (≥ 768px) — left pane: input form; right pane: story preview
 
 ## Constitution Check
 
@@ -59,9 +60,9 @@ specs/001-basic-story-form/
 
 ```text
 / (repo root)
-├── index.html           # App shell: form view + story view (single page, two panels)
-├── style.css            # All styles — mobile-first, no browser defaults left unstyled
-├── app.js               # Main controller: view routing, form logic, session state bridge
+├── index.html           # App shell: wave nav bar + two-column layout (left form pane, right story preview pane)
+├── style.css            # All styles — large-screen two-column layout, blue/green palette, wave nav, no browser defaults left unstyled
+├── app.js               # Main controller: view routing, form logic, session state bridge, story preview updater
 ├── prompts.js           # Coaching prompts data: static arrays keyed by field + status
 ├── consistency.js       # Consistency observation engine: rule-based keyword heuristics
 ├── manifest.json        # PWA manifest (name, icons, theme_color, standalone display)
@@ -73,6 +74,10 @@ specs/001-basic-story-form/
     ├── APP_RUN_DEPLOY.md  # Local run + GitHub Pages deploy instructions (to create)
     └── ...
 ```
+
+**Wave Navigation Component**: Sticky bar rendered inside `index.html`, styled in `style.css`. Contains three wave cards; each card holds a title, subtitle, and a `.wave-progress` mini progress bar. Wave 1 is active (blue/green accent); Wave 2 and Wave 3 are inactive (muted, non-interactive). Wave 1 progress bar updates via JS based on form field completion.
+
+**Color Palette**: CSS custom properties use subtle blue (`--color-blue-*`) and green (`--color-green-*`) shades as primary accents. Background and surface colors remain near-white/light-neutral to preserve the zen, minimalistic aesthetic. All WCAG 2.1 AA contrast ratios maintained.
 
 **Structure Decision**: Single project at repo root — no `src/` indirection. This is a
 zero-build, co-located feature per Constitution Principle IV. JS is split into three
@@ -117,6 +122,15 @@ readability and future testability without premature abstraction.
 17. WCAG 2.1 AA pass: labels, focus states, colour contrast ≥ 4.5:1, aria attributes where needed
 18. CSP hardening: verify `<meta http-equiv="Content-Security-Policy">` blocks inline scripts and external resources
 19. Offline test: verify app loads and functions fully after first load with network disabled
+
+### Phase I — UX Redesign: Wave Navigation, Split Screen & Design Refresh
+
+25. Wave navigation bar HTML: sticky `.wave-nav` below app title with three `.wave-card` elements (Wave 1 active, Wave 2/3 inactive); each card includes title, subtitle, and `.wave-progress` container
+26. Wave-specific progress bars HTML: step indicators inside each `.wave-progress` (Wave 1: Target/Problem/Solution; Wave 2: Empathy/Consequences/Benefits; Wave 3: Context/Why)
+27. Two-column layout restructure: wrap form and story preview in `.app-container` with `.left-pane` / `.right-pane`; left pane = form; right pane = story preview
+28. Right pane story preview HTML: `#story-preview` section with `.story-preview-field` blocks for Target/Problem/Solution; empty-state placeholder copy; inactive `.preview-placeholder` sections for Consistency Check and Coaching
+29. `updateStoryPreview(story)` in `app.js`: updates right pane field content from session state; called after submit and on form input for Wave 1 progress bar
+30. `style.css` — two-column CSS Grid/Flexbox layout (≥ 768px); wave nav bar styles; wave card active/inactive states; wave progress bar step indicators; blue/green color token refresh; fake-door placeholder section styles
 
 ### Phase G — QA & Validation
 

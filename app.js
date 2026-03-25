@@ -189,7 +189,8 @@ function renderStoryView(story) {
   // US5: coaching prompts
   renderCoaching(story);
 
-  showView('story');
+  // Update right-pane live preview (two-column layout — form stays visible)
+  updateStoryPreview(story);
 }
 
 /* --- Submit handler --------------------------------------- */
@@ -359,6 +360,52 @@ function renderCoaching(story) {
 
 
 /* ============================================================
+   PHASE 9 — UX REDESIGN: Wave Navigation & Story Preview
+   ============================================================ */
+
+/* --- Right Pane Story Preview (T057) ---------------------- */
+
+function updateStoryPreview(story) {
+  const fields = ['target', 'problem', 'solution'];
+  const allEmpty = !story.target && !story.problem && !story.solution;
+
+  fields.forEach((field, idx) => {
+    const container = document.getElementById(`preview-${field}`);
+    if (!container) return;
+    const contentEl = container.querySelector('.preview-content');
+    if (!contentEl) return;
+
+    const text = story[field];
+    contentEl.textContent = '';  // clear previous content
+
+    if (text) {
+      contentEl.textContent = text;  // plain text only — no innerHTML — eliminates XSS
+    } else {
+      const p = document.createElement('p');
+      p.className = 'preview-placeholder-text';
+      p.textContent = (idx === 0 && allEmpty)
+        ? 'Your story will appear here — fill the form on the left to get started.'
+        : '—';
+      contentEl.appendChild(p);
+    }
+  });
+}
+
+/* --- Wave 1 Progress Bar Step Update (T058) --------------- */
+
+function updateWaveProgress() {
+  const fields = ['target', 'problem', 'solution'];
+  fields.forEach(field => {
+    const step = document.querySelector(`.wave-step[data-step="${field}"]`);
+    if (!step) return;
+    const textarea = document.getElementById(field);
+    const filled = Boolean(textarea && textarea.value.trim());
+    step.classList.toggle('wave-step--filled', filled);
+  });
+}
+
+
+/* ============================================================
    INITIALISATION
    ============================================================ */
 
@@ -372,16 +419,24 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Pre-fill form from session (handles page reload within session)
-  populateForm(loadSession());
+  const session = loadSession();
+  populateForm(session);
+
+  // Initialise right-pane preview and wave progress from session
+  updateStoryPreview(session);
+  updateWaveProgress();
 
   // Wire up form submit
   const form = document.getElementById('story-form');
   if (form) form.addEventListener('submit', handleSubmit);
 
-  // Clear empty-hint when user starts typing
+  // Wire up input events: clear empty-hint + update wave progress
   ['target', 'problem', 'solution'].forEach(id => {
     const el = document.getElementById(id);
-    if (el) el.addEventListener('input', clearEmptyHint);
+    if (el) {
+      el.addEventListener('input', clearEmptyHint);
+      el.addEventListener('input', updateWaveProgress);
+    }
   });
 
   // Wire up Edit button

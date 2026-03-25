@@ -7,130 +7,225 @@
   <title>Lean Storytelling</title>
   <link rel="stylesheet" href="style.css">
   <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#1a1a2e">
+  <meta name="theme-color" content="#1e3a5f">
   <meta name="description" content="Structure your business story with Target, Problem, and Solution.">
 </head>
 <body>
 
-  <!-- FORM VIEW -->
-  <main id="form-view">
-    <header class="app-header">
-      <h1>Lean Storytelling</h1>
-      <p class="app-tagline">Build your story — one element at a time.</p>
-    </header>
+  <!-- Global App Header -->
+  <header class="app-header">
+    <h1>Lean Storytelling</h1>
+    <p class="app-tagline">Build your story — one element at a time.</p>
+  </header>
 
-    <p id="empty-hint" class="notice" role="alert" aria-live="polite" hidden></p>
-    <p id="storage-notice" class="notice notice--warn" role="status" aria-live="polite" hidden>
-      Session storage is unavailable. Your story will not survive a page refresh.
-    </p>
+  <!-- Wave Navigation Bar (T049, T051) -->
+  <nav class="wave-nav" aria-label="Story waves">
 
-    <form id="story-form" novalidate>
-
-      <fieldset>
-        <legend class="sr-only">Target</legend>
-        <label for="target">Target</label>
-        <p id="target-hint" class="hint">Who is this story for? Describe the specific person or group facing the challenge.</p>
-        <textarea
-          id="target"
-          name="target"
-          rows="4"
-          aria-describedby="target-hint"
-          placeholder="e.g. Product managers at early-stage startups…"
-        ></textarea>
-        <label for="target-status" class="sr-only">Target confidence level</label>
-        <select id="target-status" name="targetStatus" aria-describedby="target-hint">
-          <option value="">— no status —</option>
-          <option value="unsure">Unsure / Assumption / Hypothesis</option>
-          <option value="needs-review">Needs review / Iteration</option>
-          <option value="confirmed">Confirmed / Validated</option>
-        </select>
-      </fieldset>
-
-      <fieldset>
-        <legend class="sr-only">Problem</legend>
-        <label for="problem">Problem</label>
-        <p id="problem-hint" class="hint">What challenge or pain does your Target face? Be specific and concrete.</p>
-        <textarea
-          id="problem"
-          name="problem"
-          rows="4"
-          aria-describedby="problem-hint"
-          placeholder="e.g. They struggle to communicate product value to stakeholders…"
-        ></textarea>
-        <label for="problem-status" class="sr-only">Problem confidence level</label>
-        <select id="problem-status" name="problemStatus" aria-describedby="problem-hint">
-          <option value="">— no status —</option>
-          <option value="unsure">Unsure / Assumption / Hypothesis</option>
-          <option value="needs-review">Needs review / Iteration</option>
-          <option value="confirmed">Confirmed / Validated</option>
-        </select>
-      </fieldset>
-
-      <fieldset>
-        <legend class="sr-only">Solution</legend>
-        <label for="solution">Solution</label>
-        <p id="solution-hint" class="hint">How does your offering address the Problem for the Target? Focus on the outcome.</p>
-        <textarea
-          id="solution"
-          name="solution"
-          rows="4"
-          aria-describedby="solution-hint"
-          placeholder="e.g. Lean Storytelling gives them a simple 3-part framework…"
-        ></textarea>
-        <label for="solution-status" class="sr-only">Solution confidence level</label>
-        <select id="solution-status" name="solutionStatus" aria-describedby="solution-hint">
-          <option value="">— no status —</option>
-          <option value="unsure">Unsure / Assumption / Hypothesis</option>
-          <option value="needs-review">Needs review / Iteration</option>
-          <option value="confirmed">Confirmed / Validated</option>
-        </select>
-      </fieldset>
-
-      <div class="form-actions">
-        <button type="submit" id="submit-btn">View my story</button>
-        <button type="button" id="cancel-btn" hidden>Cancel</button>
+    <!-- Wave 1: Active -->
+    <div class="wave-card wave-card--active" data-wave="1">
+      <div class="wave-card-body">
+        <span class="wave-label">Wave 1</span>
+        <strong class="wave-title">Basic Story</strong>
+        <span class="wave-subtitle">Setup the mandatory and fundamental building blocks</span>
       </div>
+      <div class="wave-progress">
+        <span class="wave-step" data-step="target">Target</span>
+        <span class="wave-step" data-step="problem">Problem</span>
+        <span class="wave-step" data-step="solution">Solution</span>
+      </div>
+    </div>
 
-    </form>
-  </main>
+    <!-- Wave 2: Inactive -->
+    <div class="wave-card wave-card--inactive" data-wave="2" aria-disabled="true">
+      <div class="wave-card-body">
+        <span class="wave-label">Wave 2</span>
+        <strong class="wave-title">Detailed Story</strong>
+        <span class="wave-subtitle">Enrich with depth and connection</span>
+      </div>
+      <div class="wave-progress">
+        <span class="wave-step wave-step--inactive">Empathy</span>
+        <span class="wave-step wave-step--inactive">Consequences</span>
+        <span class="wave-step wave-step--inactive">Benefits</span>
+      </div>
+    </div>
 
-  <!-- STORY VIEW -->
+    <!-- Wave 3: Inactive -->
+    <div class="wave-card wave-card--inactive" data-wave="3" aria-disabled="true">
+      <div class="wave-card-body">
+        <span class="wave-label">Wave 3</span>
+        <strong class="wave-title">Full Story</strong>
+        <span class="wave-subtitle">Add the finishing touch</span>
+      </div>
+      <div class="wave-progress">
+        <span class="wave-step wave-step--inactive">Context</span>
+        <span class="wave-step wave-step--inactive">Why</span>
+      </div>
+    </div>
+
+  </nav>
+
+  <!-- App Container: Two-Column Layout (T053) -->
+  <div class="app-container">
+
+    <!-- Left Pane: Input Form -->
+    <div class="left-pane">
+      <main id="form-view">
+
+        <p id="empty-hint" class="notice" role="alert" aria-live="polite" hidden></p>
+        <p id="storage-notice" class="notice notice--warn" role="status" aria-live="polite" hidden>
+          Session storage is unavailable. Your story will not survive a page refresh.
+        </p>
+
+        <form id="story-form" novalidate>
+
+          <fieldset>
+            <legend class="sr-only">Target</legend>
+            <label for="target">Target</label>
+            <p id="target-hint" class="hint">Who is this story about? Who is the hero of this story, the main protagonist, who will undergo learning and transformation. Describe the specific person or group facing the challenge. This may be the buyer or the user.</p>
+            <textarea
+              id="target"
+              name="target"
+              rows="4"
+              aria-describedby="target-hint"
+              placeholder="e.g. Product managers at early-stage startups…"
+            ></textarea>
+            <label for="target-status" class="sr-only">Target confidence level</label>
+            <select id="target-status" name="targetStatus" aria-describedby="target-hint">
+              <option value="">— no status —</option>
+              <option value="unsure">Unsure / Assumption / Hypothesis</option>
+              <option value="needs-review">Needs review / Iteration</option>
+              <option value="confirmed">Confirmed / Validated</option>
+            </select>
+          </fieldset>
+
+          <fieldset>
+            <legend class="sr-only">Problem</legend>
+            <label for="problem">Problem</label>
+            <p id="problem-hint" class="hint">What problem, challenge, antagonism, or pain does your Target face? Be specific and concrete. Turn sentence in positive form, not "the lack of" Solution.</p>
+            <textarea
+              id="problem"
+              name="problem"
+              rows="4"
+              aria-describedby="problem-hint"
+              placeholder="e.g. They struggle to communicate product value to stakeholders…"
+            ></textarea>
+            <label for="problem-status" class="sr-only">Problem confidence level</label>
+            <select id="problem-status" name="problemStatus" aria-describedby="problem-hint">
+              <option value="">— no status —</option>
+              <option value="unsure">Unsure / Assumption / Hypothesis</option>
+              <option value="needs-review">Needs review / Iteration</option>
+              <option value="confirmed">Confirmed / Validated</option>
+            </select>
+          </fieldset>
+
+          <fieldset>
+            <legend class="sr-only">Solution</legend>
+            <label for="solution">Solution</label>
+            <p id="solution-hint" class="hint">How does your product, service, or business offering address the Problem for the Target? Focus on the what. Minimalise the description of the Solution in only one short, precise sentence.</p>
+            <textarea
+              id="solution"
+              name="solution"
+              rows="4"
+              aria-describedby="solution-hint"
+              placeholder="e.g. Lean Storytelling gives them a simple 3-part framework…"
+            ></textarea>
+            <label for="solution-status" class="sr-only">Solution confidence level</label>
+            <select id="solution-status" name="solutionStatus" aria-describedby="solution-hint">
+              <option value="">— no status —</option>
+              <option value="unsure">Unsure / Assumption / Hypothesis</option>
+              <option value="needs-review">Needs review / Iteration</option>
+              <option value="confirmed">Confirmed / Validated</option>
+            </select>
+          </fieldset>
+
+          <div class="form-actions">
+            <button type="submit" id="submit-btn">View my story</button>
+            <button type="button" id="cancel-btn" hidden>Cancel</button>
+          </div>
+
+        </form>
+      </main>
+    </div>
+
+    <!-- Right Pane: Story Preview (T055) -->
+    <div class="right-pane">
+      <section id="story-preview">
+        <h2 class="preview-heading">Your Story</h2>
+
+        <article class="preview-narrative">
+
+          <div class="preview-field" id="preview-target">
+            <h3 class="preview-field-label">Target</h3>
+            <div class="preview-content">
+              <p class="preview-placeholder-text">Your story will appear here — fill the form on the left to get started.</p>
+            </div>
+          </div>
+
+          <div class="preview-field" id="preview-problem">
+            <h3 class="preview-field-label">Problem</h3>
+            <div class="preview-content">
+              <p class="preview-placeholder-text">—</p>
+            </div>
+          </div>
+
+          <div class="preview-field" id="preview-solution">
+            <h3 class="preview-field-label">Solution</h3>
+            <div class="preview-content">
+              <p class="preview-placeholder-text">—</p>
+            </div>
+          </div>
+
+        </article>
+
+        <!-- Fake door: Consistency Check -->
+        <section class="preview-placeholder preview-placeholder--disabled">
+          <div class="preview-placeholder-header">
+            <h3>Consistency Check</h3>
+            <span class="coming-soon-badge">Coming soon</span>
+          </div>
+          <p class="preview-placeholder-body">Consistency analysis will surface once your story is complete.</p>
+        </section>
+
+        <!-- Fake door: Coaching -->
+        <section class="preview-placeholder preview-placeholder--disabled">
+          <div class="preview-placeholder-header">
+            <h3>Coaching</h3>
+            <span class="coming-soon-badge">Coming soon</span>
+          </div>
+          <p class="preview-placeholder-body">Coaching questions will help you strengthen your story.</p>
+        </section>
+
+      </section>
+    </div>
+
+  </div>
+
+  <!-- Legacy story view: kept for data-binding compatibility, not shown in two-column layout -->
   <div id="story-view" hidden>
-    <header class="app-header">
-      <h1>Your Story</h1>
-    </header>
-
     <article class="story-narrative">
-
       <section class="story-field" id="view-target">
         <div class="field-header"><h2>Target</h2></div>
         <div class="field-content"></div>
       </section>
-
       <section class="story-field" id="view-problem">
         <div class="field-header"><h2>Problem</h2></div>
         <div class="field-content"></div>
       </section>
-
       <section class="story-field" id="view-solution">
         <div class="field-header"><h2>Solution</h2></div>
         <div class="field-content"></div>
       </section>
-
     </article>
-
     <section id="consistency-section" class="feedback-section">
       <h2>Consistency</h2>
       <ul id="consistency-list"></ul>
     </section>
-
     <section id="coaching-section" class="feedback-section">
       <h2>Coaching</h2>
       <div id="coaching-target" class="coaching-group" hidden></div>
       <div id="coaching-problem" class="coaching-group" hidden></div>
       <div id="coaching-solution" class="coaching-group" hidden></div>
     </section>
-
     <div class="story-actions">
       <button type="button" id="edit-btn">Edit story</button>
     </div>
