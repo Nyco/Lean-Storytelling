@@ -30,3 +30,10 @@ The acronym **TopSol** (Target + Problem + Solution) is an older name for the sa
 ## Contributing
 
 All contributions are Markdown edits. When adding new `docs/` pages, list them in `docs/README.md`. Keep language concise and example-driven, consistent with the existing style.
+
+## Active Technologies
+- HTML5, CSS3, JavaScript ES2020 (no transpilation, no bundler) + None — zero runtime dependencies (001-basic-story-form)
+- `sessionStorage` (session-scoped, cleared on tab/window close); in-memory object fallback if sessionStorage unavailable (001-basic-story-form)
+
+## Recent Changes
+- 001-basic-story-form: Added HTML5, CSS3, JavaScript ES2020 (no transpilation, no bundler) + None — zero runtime dependencies

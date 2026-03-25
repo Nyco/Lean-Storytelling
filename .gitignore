@@ -1,2 +1,14 @@
+# OS
+.DS_Store
+Thumbs.db
+*.tmp
+*.swp
+
+# Editor
+.vscode/
+.idea/
+
+# Logs
+*.log
 node_modules/
 data.json
