@@ -10,6 +10,39 @@
 
 So that people communicate and listen, in a standard and proven way, by giving and taking stories, with the same and minimalistic approach
 
+## Lean Storytelling web app (MVP)
+
+This repository now also includes a minimal Node.js web application (`server.js`) with:
+
+* Email-based account creation (email as user ID)
+* Automatically generated high-entropy password for new accounts
+* Password reset workflow with short-lived, single-use tokens
+* Password hashing (never stored in clear text)
+* Account destruction with explicit confirmation
+* Authenticated storytelling wizard with 3 structured steps
+* Story rendering output in Lean Storytelling order
+* Hidden demand tracking for top bar and premium feature placeholder buttons
+
+### Run locally
+
+```bash
+npm start
+```
+
+The app will be available on `http://localhost:5000`.
+
+
+### Quickstart and public review
+
+If you are asking "what do I do with it?", start here:
+
+1. Run locally: `npm start`
+2. Validate: `npm run check` and `npm test`
+3. Deploy publicly for free (Render): see [`docs/APP_RUN_DEPLOY.md`](docs/APP_RUN_DEPLOY.md)
+
+> Important: commits created by an AI agent in a local/container clone are **not visible on GitHub** until they are pushed to a remote repository.
+
+More:
 ## Who it is indended for
 
 Lean Storytelling is designed for leaders and managers who want to be much more efficient in their communication style
