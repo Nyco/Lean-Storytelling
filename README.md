@@ -13,39 +13,6 @@ App under AGPLv3
 
 So that people communicate and listen, in a standard and proven manner, the way humans have told stories since the dawn of humanity, by giving and taking stories, living the feeling of adventure.
 
-## Lean Storytelling web app (MVP)
-
-This repository now also includes a minimal Node.js web application (`server.js`) with:
-
-* Email-based account creation (email as user ID)
-* Automatically generated high-entropy password for new accounts
-* Password reset workflow with short-lived, single-use tokens
-* Password hashing (never stored in clear text)
-* Account destruction with explicit confirmation
-* Authenticated storytelling wizard with 3 structured steps
-* Story rendering output in Lean Storytelling order
-* Hidden demand tracking for top bar and premium feature placeholder buttons
-
-### Run locally
-
-```bash
-npm start
-```
-
-The app will be available on `http://localhost:5000`.
-
-
-### Quickstart and public review
-
-If you are asking "what do I do with it?", start here:
-
-1. Run locally: `npm start`
-2. Validate: `npm run check` and `npm test`
-3. Deploy publicly for free (Render): see [`docs/APP_RUN_DEPLOY.md`](docs/APP_RUN_DEPLOY.md)
-
-> Important: commits created by an AI agent in a local/container clone are **not visible on GitHub** until they are pushed to a remote repository.
-
-More:
 ## Who it is indended for
 
 Lean Storytelling is designed for leaders and managers who want to be much more efficient in their business and tech communication style.
@@ -77,12 +44,12 @@ But people have difficulties to properly "send" stories by respecting the untold
 ## Overview of the playbook
 
 **Core Principles:**
-- Start with the basic story ingredients
-- Add details to thicken the plot
-- Polish with the finishing touch
+- Start with the Basic Story ingredients
+- Add more in Detailed Story to thicken the plot
+- Polish with the finishing touch in the Full Story
 - Continuously test, learn, and adapt based on feedback
 - Refine your story to its essence
-- For advanced storytelling, use the Extension Pack
+- For advanced storytelling, use the Extension Pack (Addons and Complex)
 - This method is lean and agile, tailored for business—not generic storytelling
 
 ---
@@ -162,34 +129,38 @@ Specialise story to:
 - Stakeholders
 - Buyers
 - Investors
+- Collaborators
 
 ---
 
 ## Extension Pack
 
-### Extend you story
+### Addons
 
 In case an option is absolutely needed, and you can't live without:
 
 **Optional Additions (use as needed):**
 - **Challenge**: Pose an open question to engage your audience
-- **Quote**: Validate the problem or benefits with a relevant quote
+- **Quote**: Validate an element with a relevant quote
+- **Data**: Bring facts and figures that proves your point 
 - **Alternatives**: Highlight unsatisfactory solutions the hero has tried
 - **Competition**: Acknowledge competitors, but emphasize why your solution is superior
 - **Unfair Advantage**: What makes your solution uniquely effective, and difficult to imitate
 - **Warnings**: Potential pitfalls or risks
 - **Self-Benefits**: How you also benefit from the solution
-- **Stages in AARRR**: Acquisition, Activation, Retention, Referral, Revenue
 - **Call to Action**: What you want your audience to do next
 - **Failure**: Share a past failure or setback to build credibility and context
+- **Same-same**: The same type of people have lived the same story
 
 ### Complex Story
 
 Use with extreme care:
+
 - In one story:
     - Use extension pack
     - Target multiple personas
     - Address multiple problems
+    - Bring multiple Solutions
 - Blend story arcs:
     - Merge stories with multiple common elements
     - Cross-over stories in the same timeline/universe
@@ -218,7 +189,11 @@ Now I have that superpower to unlock the full potential of transdisciplinarity: 
 
 ## The storytelling is the most powerfull tool for sales
 
-## Tech Manager orchestrating different teams
+(todo)
+
+## Tech Manager aligning different teams
+
+(todo)
 
 --- 
 
