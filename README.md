@@ -1,26 +1,29 @@
 # Lean Storytelling: deliver compelling business stories
 
 **Lean Storytelling**:
-- Shape, structure, and refine the story you tell about your business/product/service
-- Deliver and specialise in various formats, and wide ranges of audiences
 
-[![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](http://creativecommons.org/licenses/by-sa/4.0/)
+- Shape, structure, and refine the story you tell, about your business/product/service.
+- Specialise and deliver your stories in various formats, and different audiences.
+
+Canvas and Methodology (and upcoming book) under [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](http://creativecommons.org/licenses/by-sa/4.0/)
+
+App under AGPLv3
 
 ## Why "Lean Storytelling"?
 
-So that people communicate and listen, in a standard and proven way, by giving and taking stories, with the same and minimalistic approach
+So that people communicate and listen, in a standard and proven manner, the way humans have told stories since the dawn of humanity, by giving and taking stories, living the feeling of adventure.
 
 ## Who it is indended for
 
-Lean Storytelling is designed for leaders and managers who want to be much more efficient in their communication style
+Lean Storytelling is designed for leaders and managers who want to be much more efficient in their business and tech communication style.
 
 ## How this works
 
-Shape and structure your story, given the widely used, but with secret ingredients
-Then deliver your story in any format or context
+Shape and structure your story, given the widely used, but implicit ingredients.
+Then deliver your story in any format or context.
 
 People know how to "receive" a story, as they are used to "receiving" novels, series, movies...
-But people have difficulties to properly "send" stories by respecting the untold, implicit rules, that humanity has used since forever 
+But people have difficulties to properly "send" stories by respecting the untold, implicit secrets, that humanity has used since forever.
 
 ## What Lean Storytelling Is
 
@@ -160,69 +163,72 @@ Use with extreme care:
 
 ---
 
-# Example story: how I have built Lean Storytelling
+# Example stories
 
-## Context
+## How I have built Lean Storytelling
+
 I work in product organisations at scale, where multiple disciplines collaborate under constant pressure to deliver and perform.
 
-## Target
 I am a product manager in this rapidly evolving tech industry, operating across both strategy and execution, discovery and delivery.
 
-## Empathy
 I sit at the intersection of many different teams and people — co-constructing with engineering (dev, QA, ops), designers, sales, marketing, and a range of stakeholders. Each speaks their own language and carries their own agenda.
 
-## Problem
 On one side, people push one-way communication without seeking feedback or confirmation it is correlty understood. On the other, people misread the information they receive without asking for clarification nor precision. People go fast and do not waste time, they make few effort to listen carefully, to truly sync — nor to speak in a way that others can actually understand.
 
-## Consequences
 Teams and leaders stay loosely coupled, rather staying within their own discipline and perspective. The organisation's network loses value, and the full outcome is far completely reached.
 
-## Solution
 I have built Lean Storytelling: a way of structuring a story as a shared language. It takes the form of a simple A4 canvas, accompanied by a workshop, grounded in proven best practices.
 
-## Benefits
 I can now easily and quickly shape stories that can be delivered in many forms — and when properly battle-tested, people don't just receive my story, they sync, align, and resonate with it.
 
-## Why
 Now I have that superpower to unlock the full potential of transdisciplinarity: going further, together, with greater quality.
 
+## The storytelling is the most powerfull tool for sales
+
+## Tech Manager orchestrating different teams
+
 --- 
+
 # Q&A / FAQ
 
 ## What is Lean Storytelling ("TopSol Playbook")?
 
-Lean Storytelling ("TopSol Playbook") is a collection of recipes, templates, and best practices designed to help you craft effective stories for business and product contexts. It serves as a practical guide, not a rigid framework.
+Lean Storytelling ("TopSol Playbook") is a collection of recipes, templates, and best practices designed to help you craft effective stories for business, service, and product contexts. It serves as a practical field guide, not a rigid framework.
 
 ---
 
 ## Who is it for?
 
 This approach is ideal for:
-- Product owners/managers
-- Scrum masters and Agile coaches
+- Product Owners/Managers
+- Scrum Masters and Agile coaches
 - Designers
 - Engineers
 - Marketing professionals
 - Sales teams
 - Founders, and C-level executives
 - Leaders and Managers
+- Freelances
 
 ---
 
-## Beyond storytelling
+## Beyond storytelling: test your assumptions
 
-Beyond only telling stories, Lean Storytelling helps you refine your assumptions and hypothesis, your unique or key value proposition, and/or unique selling point, by iterating on what is convincing.
+Beyond only telling stories, Lean Storytelling is a powerful tool that helps you refine your assumptions and hypothesis, your unique or key value proposition, and/or unique selling point, by iterating on what is convincing with feedback loops.
 
 ---
 
-## How is it used? From A to Z?
+## How is it used? From A to Z? What is it for? What's the goal?
 
 **Applications:**
 - Describe Backlog, Epics, User Stories in Agile teams (Scrum/Kanban), helping to visualize expected outcomes
 - Test and get quick feedback on solutions or value propositions in customer interviews, supporting Lean Startup and Design Thinking
 - Sell products, features, services or solutions
+- Set the messaging, so you reach properly your target, and it's awin
+- Do clean and lean developer advocacy, by sending the signals the right way
+- Describe the experience you offer, with clear benefits
 
-**Benefit:** It synchronizes and aligns people involved in the User Story pipeline.
+**Benefit:** Propser Storytellng synchronizes and aligns people.
 
 ---
 
@@ -230,12 +236,14 @@ Beyond only telling stories, Lean Storytelling helps you refine your assumptions
 
 A well-crafted story can be delivered in various formats:
 - **Spoken**: Podcasts, ads, videoconferences, videos, meetups, speeches, public speaking
-- **Written**: Blog posts, slide decks, tickets, social media
+- **Written**: Blog posts, slide decks, tickets, social media, specs
 - **Visual**: Images, videos, schemas, drawings, infographies
 
 ---
 
 ## What does "TopSol Playbook" stand for?
+
+This is the old name for Lean Storytelling.
 
 - **Playbook**: Emphasizes practicality and avoids the term "framework"; it’s not an advanced storytelling technique.
 - **TopSol**: An acronym for the core elements:
@@ -261,6 +269,7 @@ Lean Storytelling builds on established methodologies:
 - Ask questions or suggest improvements via [issues](https://github.com/Nyco/TopSol-Playbook/issues)
 - Submit patches or merge requests
 - Share your knowledge and experience
+- Test the alpha app and send feedback
 
 ---
 
@@ -272,12 +281,23 @@ Yes! Lean Storytelling is licensed under **Creative Commons Attribution-ShareAli
 
 ---
 
-## Can you organize a workshop?
+## Can you organize a workshop or a keynote?
 
-Yes, for up to 10 people, lasting 1.5 hours.
-Contact me via:
-- [LinkedIn](https://www.linkedin.com/in/nicolasverite/)
-- [Twitter](https://twitter.com/nyconyco)
+Yes.
+
+Workshop:
+
+- For up to 10 people
+- Duration 1.5 hours
+- Hands on, practice hard, straight to the point, learn by doing, peer review
+
+Keynote: 20 min or 40 min
+- Roots of humanity storytelling
+- Reverse-engineer Hollywood-style storytelling
+- Master the craft and art of business storytelling
+
+Contact me via: [LinkedIn](https://www.linkedin.com/in/nicolasverite/)
+
 
 ---
 
@@ -287,8 +307,10 @@ Copy this file in you own drive: "Lean Storytelling Canvas TEMPLATE (please copy
 
 Ask me for the PDF, ODF, Docx versions
 
+Ask me for Mural, Miro, Notion, etc.
+
 ---
 
 ## Can an app help me write my own stories?
 
-Yes, this is being planned
+Yes, this is being vide coded under AGPLv3 license
