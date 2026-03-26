@@ -26,7 +26,6 @@ Stories List and Versioning
 ## NEXT STEPS
 
 v0.4
-Riskiest assumption:
 Coaching, teaching, mentoring, advising: AI and/or programmatic?
 Project CRUD
 Extension pack: addons, complex
@@ -45,4 +44,3 @@ Billing & Payment
 Organisation CRUD
 Team CRUD
 Collaborate
-
