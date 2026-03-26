@@ -14,6 +14,9 @@ const PRECACHE_URLS = [
   '/manifest.json',
   '/icon-192.png',
   '/icon-512.png',
+  '/fonts/playfair-display-v40-latin-regular.woff2',
+  '/fonts/playfair-display-v40-latin-700.woff2',
+  '/fonts/dm-sans-v17-latin-regular.woff2',
 ];
 
 /* Install: pre-cache all static assets */

@@ -34,6 +34,9 @@ All contributions are Markdown edits. When adding new `docs/` pages, list them i
 ## Active Technologies
 - HTML5, CSS3, JavaScript ES2020 (no transpilation, no bundler) + None — zero runtime dependencies (001-basic-story-form)
 - `sessionStorage` (session-scoped, cleared on tab/window close); in-memory object fallback if sessionStorage unavailable (001-basic-story-form)
+- JavaScript ES2020, HTML5, CSS3 (no transpilation, no bundler) + None — zero runtime dependencies (002-full-story-builder)
+- `sessionStorage` with in-memory object fallback (same as v0.1) (002-full-story-builder)
 
 ## Recent Changes
+- 002-full-story-builder: Implemented full v0.2 — all 3 waves active, wave router, real-time preview, unified field template with foldable advice, story title widget, accessible progress bars, self-hosted Playfair Display + DM Sans fonts
 - 001-basic-story-form: Added HTML5, CSS3, JavaScript ES2020 (no transpilation, no bundler) + None — zero runtime dependencies
