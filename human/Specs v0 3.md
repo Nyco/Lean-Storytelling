@@ -8,130 +8,137 @@ In this document, we focus on the development v0.3, with new features and new ar
 
 # Goals (high-level)
 
-The major goal is to move app from local to public internet, add security and reliability, account and "Stories" management, still learning and having fun:
+The major goal is to move the app from local and static to public internet with a DB and API, add the necessary security and reliability, and features such as account and Stories management:
 
-- move and re-architecture web app:
-    - adapt from static/local app to public internet
-    - manage server-side storage
-    - choose modern architecture
-    - use only free/opensource dependencies
-    - keep app modern, elegant, minimalistic, lighweight, easy and fun to maintain, from a techie pov
-    - secure by default, encrypt all you can (right balance)
-    - keep all data (local and/or server) in case of crash/close/failure
-    - define the front and back separation and flows
-    - choose API strategy (REST, GraphQL, gRPC, etc.): tech, speed, reliability, security, support, popularity, maintenance
-    - document how to deploy and operate:
-        - for beginners
-        - locally on a Linux (or macOS) computer
-        - on generic CSPs like Scaleway or OVH (use & play with Docker?)
-- new valuable storywriting features
-    - implement secure yet simple Account CRUD features (subscription wall, modern frictionless & balanced onboarding)
-    - implement basic Stories List and Versioning (many Stories per user, and many versions per Story)
+- Move and re-architect the web app:
+    - Adapt from static/local app to public internet
+    - Manage server-side storage
+    - Use only free/open-source dependencies
+    - Keep app modern, elegant, minimalistic, lightweight, easy and fun to maintain
+    - Secure by default, encrypt all you can (right balance)
+    - Keep all data (local and/or server) in case of crash/close/failure
+    - Define the front and back separation and flows
+    - Document how to deploy and operate:
+        - For beginners
+        - Locally on a Linux (or macOS) computer
+        - On generic CSPs like Scaleway or OVH using Docker
+- New valuable story-writing features:
+    - Implement secure yet simple Account CRUD features (modern, frictionless, and balanced onboarding)
+    - Implement basic Stories List and Versioning (many Stories per user, and many versions per Story)
 
-# Tech details: dev and ops
-
-Help me with this part!
+# Tech details: build & run
 
 Goals:
 
-I want to design and code an app properly, and have fun and learn to build, deploy, operate, maintain an app via vibe coding
+Design and code an app properly, and easily deploy and operate.
 
 Roles:
 
-You are an senior architect, senior full stack dev, senior ops/devops
+You are a senior architect, senior full-stack dev, senior ops/devops/SRE.
 
 Actions:
 
-- detail and polish this plan
-- ask me questions and explain the tradeoffs
-- a non-coder like me should be able to understand/learn, and validate what you do
+- Detail and polish this plan
+- Ask me questions and explain the tradeoffs
+- A non-coder like me should be able to understand, learn, and validate what you do
 
 Success Criteria:
 
-I can deploy an app on a public server, and run user tests in my network
+I can deploy an app on a public server and run user tests in my network.
 
-## Here is the plan to review and refine
-Today in v0.2:
+## Architecture decisions
 
-- The app runs locally in the browser
-- Data is stored there
-- No sharing, no persistence across devices
-- No backup/recovery
+### Tech stack
 
-Target in v0.3:
+- **Frontend:** existing vanilla JS + HTML + CSS (no change)
+- **Backend:** Node.js with Fastify — same language as the frontend, lightweight, fast, easy to learn
+- **Database:** PostgreSQL — reliable, free, handles JSON natively (good for story fields), runs everywhere
+- **API style:** REST — simplest to learn, easy to test with a browser or curl, no overhead
 
-- The app is accessible via a public URL
-- The app is deployable and testable on my laptops (Ubuntu, macOS)
-- User can CRUD their account, with safe password policies
-- Users can save and continue their work safely whatever the place and device
-- Data is kept secure and safe even if browser closes or crashes
-- System is simple, low-cost, secure, documented, and maintainable
+### Deployment: Docker Compose
 
-Simplicity:
+Docker Compose is confirmed for both local development and production.
 
-We deliberately want and need to avoid complexity:
+Why Docker:
+- Consistent environment: works the same on Ubuntu, macOS, and production server
+- One command (`docker compose up`) starts the whole stack: frontend + backend + DB
+- No "works on my machine" issues
+- Easy to share and hand off
 
-- no Kubernetes and the likes
-- no heavy backend and complex micro-architecture
-- maybe Docker is the way to go for local (functional test) and internet (prod) deployments?
+Why not Kubernetes or anything heavier: out of scope, adds complexity with no benefit at this scale.
 
-Standard architecture:
-
-I suggest this architecture, but roast me (say what's good, suggest improvements):
+### Architecture
 
 ```
-Browser (Frontend) -> (HTTPS API calls) -> Backend (API) -> Database (persistent storage)
+Browser (Frontend) -> (HTTPS API calls) -> Backend (Fastify/Node.js) -> Database (PostgreSQL)
 ```
 
-Provider:
+### Authentication: magic link
 
-For each arch tier, help me choose a free or cheap, and easy provider
+Chosen approach: **magic link** (passwordless).
 
-Storage:
+How it works: the user enters their email → the backend sends a one-time login link → the user clicks it → they are logged in. No password to set, remember, or reset.
 
-Choose a secure yet simple and reliable storage strategy: local, cache, server, CDN, sync, backup, etc.
+Why:
+- Less code than password + reset flow (no hashing, no password policy, no reset token)
+- Better UX: nothing to forget
+- Secure: no weak passwords
 
-Safety, reliability:
+What it needs:
+- An email sending service (Resend — free tier: 3,000 emails/month, easy to set up)
+- A short-lived token table in the DB (token + expiry + email, deleted after use)
 
-Design a safe system in front of unvoluntary actions, crashes, network failures, data loss, etc.
+### Storage strategy
 
-Craft an automated backp and restore policy
+- **In-session (anonymous):** browser sessionStorage (existing behavior)
+- **Persistent (authenticated):** server-side PostgreSQL
+- **Backup:** automated daily DB dump, stored locally on the server
+- **Reliability:** auto-save to server on every field change (debounced), so no data is lost on crash or tab close
 
-Security:
+### Provider
 
-Make this app as secure as its maturity
+For each tier, recommend a free or cheap provider:
+- **Frontend hosting:** static files served by the backend (no separate CDN needed at this stage)
+- **Backend + DB hosting:** single VPS on Scaleway or OVH (1 CPU, 2 GB RAM is enough) — ~€3–5/month
+- **Email:** Resend free tier (3,000 emails/month)
 
-At a later stage, we plan to bill users
+### Safety and reliability
 
-You refine & I learn:
+- Auto-save to server on every field change (debounced 2s) — no manual save needed
+- Optimistic UI: changes appear instantly, sync happens in background
+- On network failure: queue writes locally and retry when connection is restored
+- Automated daily DB backup with a simple restore procedure, documented step by step
 
-- Ask me all questions to clarify
-- Challenge me
-- Suggest things
-- Explain me, as I want to understand and learn
-- We are pairing in some way
+### Security
+
+- HTTPS enforced everywhere (Let's Encrypt, free)
+- Magic link tokens: single-use, expire after 15 minutes
+- All DB connections over TLS
+- Passwords: none to manage (magic link removes this surface)
+- Rate limiting on the magic link endpoint to prevent email flooding
+- Data encrypted at rest in PostgreSQL
 
 # Functional
 
 Goals:
 
-- design/construct an onboarding with  minimal friction
-- allow the user to produce some effort, but focused on core value: story creation/crafting and stories management (I want to ease the user pain/friction for supporting/secondary features) 
-- simple but extensible system
+- Design an onboarding with minimal friction
+- Allow users to focus on core value: story creation/crafting and stories management
+- Simple but extensible system
 
 Roles:
 
-You are an expert product manager, expert UX/UI designer
+You are an expert product manager, expert UX/UI designer.
 
 Actions:
 
-- peer review this plan below
-- ask questions to clarify
-- a non-coder like me should be able to understand/learn, and validate what you do
+- Peer review this plan below
+- Ask questions to clarify
+- A non-coder like me should be able to understand, learn, and validate what you do
 
 Success Criteria:
 
-the UX and workflow allow users to create and manage their Stories, reliability, securely, on any large screen device
+The UX and workflow allow users to create and manage their Stories, reliably and securely, on any large screen device.
 
 ## Customer journeys
 
@@ -141,73 +148,71 @@ the UX and workflow allow users to create and manage their Stories, reliability,
 Discover/visit → Start Story Building → Edit/review loops
 ```
 
-Only access to Story Builder, with the three-form workflow, only on one live Story that can changed/edited forever, but never saved nor versionned
+Only access to Story Builder, with the three-wave workflow, only one live Story that can be changed/edited forever, but never saved nor versioned.
 
-- Identified and authenticated user
+- Identified and authenticated user:
 
 ```
 Discover/visit → Start Story Building → Edit/review loops → Save Stories → Manage Stories and Versions / Update Profile
 ```
 
-Access to Story Builder, Story Management, Profile
+Access to Story Builder, Story Management, Profile.
 
-## Let users try and get some value before account creation for free
+## Let users try and get value before account creation
 
-Allow anonymous users to use Story Buidler: only one Story that they can edit and overwrite forever, no save, no version.
+Allow anonymous users to use the Story Builder: only one Story that they can edit and overwrite forever, no save, no versioning.
 
-Warn somehow the user that nothing is saved if they don't create their account ut we apply no usage limitation. Informe the user that with an account they have access to Story Management and Versionning.
+Warn the user that nothing is saved if they don't create an account, but apply no usage limitation. Inform the user that with an account they have access to Story Management and Versioning.
 
-CTA on top right of app to login or signup.
+CTA on top right of app to log in or sign up.
+
+### sessionStorage migration on sign-up
+
+When an anonymous user signs up or logs in, their current in-progress Story (from sessionStorage) is automatically saved to their account as their first Story (version 1). Nothing is lost.
 
 ## Account CRUD
 
-Questions and doubts, discussion to have with the architect/devops AND the designer:
-
-- Create account (easy, fast, frictionless): input valid email address, input secure password (standard policy), confirm password (check). Store encrypted passwords in a secure DB
-    - And then, can we simply create a "Reset password" form? I guess this would need the ability for the backend to send emails (that ar enot caught as spam or malicious): how to do this simply and cheap, and what are the pros and cons?
-- But then, if we have the capability to send emails from the backend, can we switch to a "magic link" UX?
-- What are the pros and cons to each approach? What are the tradeoffs at this stage/maturity of this project?
-
-Add a CTA to Update profile: with job and intent capture.
-
-Destroy account with all data (no export/save, encourage copy-paste).
+- **Create account:** enter a valid email address → receive a magic link → click to log in. Account is created automatically on first login.
+- **Update profile:** add job title and intent (optional, captured after first login).
+- **Delete account:** destroys all data permanently (no export — encourage copy-paste before deleting).
 
 ## Stories List and Versioning
 
-The features and behaviors I want to offer: allow the user to crate and manahe multiple Stories, and multiple versions of each Story
+Allow the user to create and manage multiple Stories, and multiple versions of each Story:
 
-- Create a Story: opens a new empty Story Buidler 
+- Create a Story: opens a new empty Story Builder
 - Edit a Story: opens the Story Builder with the latest version of the Story
-- Delete a Story: empty all the Story Builder fields, remove Story from the list along with all versions of this Story
-- Create a new +1 version from the latest version of an existing Story (add version +1 of this Story)
-- Copy or fork of any version of an existing Story, as as a version 1 of a new Story
+- Delete a Story: removes the Story from the list along with all its versions
+- Create a new version from the latest version of an existing Story (version +1)
+- Copy or fork any version of an existing Story as version 1 of a new Story
 - Delete any version of a Story
 
-I want to discuss the UX and UI
+UX/flow:
 
-## Minor tweaks
+- Create a foldable left sidebar (that will be reused for more features later)
+- Show foldable tree/hierarchy (like macOS Finder): My Stories > [Story title] > [Version]
 
-Make a left foldable sidebar
-
-Add a top bar, with the app title "Lean Storytelling", and fake buttons on right end "Sign up", "Log in"
-
-Change text from
-"
-Lean Storytelling
-Build your story — one element at a time.
-"
-to
-"
-Story Builder
-Build your story — one element at a time.
-"
-
+Example:
+┌───────────────────────────────────────────────┐
+│ My Stories                    [+ New Story]   │
+├───────────────────────────────────────────────┤
+│ ▶ Product Launch 2025        v3    2 days ago │
+├───────────────────────────────────────────────┤
+│ ▼ Investor Pitch             v2    today      │
+│   ├─ v2  today          [Edit] [Fork] [Del]   │
+│   ├─ v1  last week      [Edit] [Fork] [Del]   │
+│   └─ [+ New version]   [Delete story]         │
+├───────────────────────────────────────────────┤
+│ ▶ Team Onboarding            v1    yesterday  │
+└───────────────────────────────────────────────┘
 
 
-# To do after implem + deploy
+## UI tweaks (frontend-only, no backend dependency)
 
-After your full implementation of this version, my tests and validation, remind me to use/experiment spec-kit extensions:
+These can ship independently of the backend migration:
 
-- document
-- learn
-
+- Add a top bar with the app title "Lean Storytelling" and buttons on the right: "Sign up", "Log in"
+- Change the hero text from:
+   "Lean Storytelling — Build your story — one element at a time."
+   to:
+   "Story Builder — Build your story — one element at a time."
