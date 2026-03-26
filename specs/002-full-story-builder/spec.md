@@ -2,7 +2,7 @@
 
 **Feature Branch**: `002-full-story-builder`
 **Created**: 2026-03-25
-**Status**: Draft
+**Status**: Completed
 **Input**: User description: "v0.2 — end-to-end Story Builder: all three waves active (Basic, Detailed, Full Story), unified field template with foldable advice and status emojis, real-time right-pane preview, story title widget, typography refresh, active progress bars with accessibility."
 
 ---
