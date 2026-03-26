@@ -1,7 +1,32 @@
 /* ============================================================
-   LEAN STORYTELLING — style.css
+   LEAN STORYTELLING — style.css — v0.2
    Mobile-first · No default browser styles left unstyled
    ============================================================ */
+
+/* --- Self-Hosted Fonts ------------------------------------ */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/playfair-display-v40-latin-regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/playfair-display-v40-latin-700.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/dm-sans-v17-latin-regular.woff2') format('woff2');
+}
 
 /* --- Custom Properties (Design Tokens) -------------------- */
 :root {
@@ -44,12 +69,6 @@
   --color-confirmed-text: var(--color-green-700);
   --color-confirmed-border: var(--color-green-500);
 
-  /* Consistency observation colours */
-  --color-connected-border:  var(--color-green-500);
-  --color-disconnect-border: #fbbf24;
-  --color-tooshort-border:   #d1d5db;
-  --color-incomplete-border: #e5e7eb;
-
   /* Spacing (4 px base) */
   --space-1:  4px;
   --space-2:  8px;
@@ -61,13 +80,16 @@
   --space-8: 64px;
 
   /* Typography */
-  --font-sans: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-body:    'DM Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-sans:    'DM Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
   --font-size-xs:   0.75rem;
   --font-size-sm:   0.875rem;
   --font-size-base: 1rem;
   --font-size-lg:   1.125rem;
   --font-size-xl:   1.375rem;
   --font-size-2xl:  1.75rem;
+  --font-size-3xl:  2.25rem;
   --line-height-base: 1.6;
   --line-height-tight: 1.3;
 
@@ -95,7 +117,7 @@ html {
 }
 
 body {
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   font-size: var(--font-size-base);
   line-height: var(--line-height-base);
   color: var(--color-text);
@@ -123,12 +145,13 @@ body {
 /* --- App Header ------------------------------------------- */
 .app-header {
   flex-shrink: 0;
-  padding: var(--space-4) var(--space-6);
+  padding: var(--space-3) var(--space-6) var(--space-2);
   background: var(--color-surface);
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: none;
 }
 
 .app-header h1 {
+  font-family: var(--font-display);
   font-size: var(--font-size-xl);
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -142,7 +165,168 @@ body {
   color: var(--color-text-muted);
 }
 
-/* --- Two-Column App Container (T054) ---------------------- */
+/* ============================================================
+   STORY TITLE WIDGET (US6)
+   ============================================================ */
+
+.story-title-widget {
+  flex-shrink: 0;
+  padding: var(--space-2) var(--space-6) var(--space-3);
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.story-title-display {
+  font-family: var(--font-display);
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: var(--line-height-tight);
+  cursor: pointer;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: color var(--transition-fast);
+}
+
+.story-title-display:empty::before {
+  content: 'Give your story a title…';
+  color: var(--color-text-muted);
+  font-weight: 400;
+  font-style: italic;
+}
+
+.story-title-display:hover {
+  color: var(--color-accent);
+}
+
+.story-title-input {
+  font-family: var(--font-display);
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: var(--line-height-tight);
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid var(--color-accent);
+  background: transparent;
+  padding: 0 0 2px;
+  outline: none;
+}
+
+.story-title-input::placeholder {
+  color: var(--color-text-muted);
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* ============================================================
+   WAVE NAVIGATION BAR
+   ============================================================ */
+
+.wave-nav {
+  display: flex;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-6);
+  background: var(--color-surface);
+  border-bottom: 1.5px solid var(--color-border);
+  flex-shrink: 0;
+}
+
+.wave-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--color-border);
+  background: var(--color-surface);
+  cursor: pointer;
+  transition: border-color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.wave-card:hover {
+  border-color: var(--color-blue-400);
+  background: var(--color-blue-50);
+}
+
+.wave-card:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.wave-card--active {
+  border-color: var(--color-blue-500);
+  border-top: 3px solid var(--color-blue-600);
+  background: var(--color-blue-50);
+}
+
+.wave-card--active:hover {
+  border-color: var(--color-blue-500);
+  border-top-color: var(--color-blue-600);
+}
+
+.wave-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.wave-title {
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: var(--line-height-tight);
+}
+
+.wave-card--active .wave-title {
+  color: var(--color-blue-700);
+}
+
+.wave-subtitle {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+/* ============================================================
+   WAVE PROGRESS STEPS (US7)
+   ============================================================ */
+
+.wave-progress {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  margin-top: var(--space-1);
+}
+
+.wave-step {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  font-size: 0.75rem;
+  border-radius: 50%;
+  background: transparent;
+  border: 1.5px solid var(--color-border);
+  color: var(--color-text-muted);
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.wave-step--filled {
+  background: var(--color-green-600);
+  border-color: var(--color-green-600);
+  color: #ffffff;
+}
+
+/* ============================================================
+   TWO-COLUMN APP CONTAINER
+   ============================================================ */
+
 .app-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -168,13 +352,6 @@ body {
   max-width: 560px;
 }
 
-/* Legacy story view — hidden in two-column layout */
-#story-view {
-  padding: var(--space-6);
-  max-width: 640px;
-  margin: 0 auto;
-}
-
 /* --- Notice / Alert --------------------------------------- */
 .notice {
   font-size: var(--font-size-sm);
@@ -192,38 +369,92 @@ body {
   color: var(--color-unsure-text);
 }
 
-/* --- Form ------------------------------------------------- */
-#story-form {
+/* --- Form sections ---------------------------------------- */
+#basic-form,
+#detailed-form,
+#full-form {
   display: flex;
   flex-direction: column;
   gap: var(--space-6);
 }
 
-fieldset {
-  border: none;
+/* ============================================================
+   UNIFIED FIELD TEMPLATE (US3–US7)
+   ============================================================ */
+
+.field-group {
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
 }
 
-label {
+.field-title {
+  font-family: var(--font-body);
   font-size: var(--font-size-base);
-  font-weight: 600;
+  font-weight: 700;
   color: var(--color-text);
-  display: block;
+  line-height: var(--line-height-tight);
 }
 
-.hint {
+.field-explainer {
   font-size: var(--font-size-sm);
   color: var(--color-text-muted);
   line-height: var(--line-height-base);
 }
 
+/* --- Foldable Advice (US5) -------------------------------- */
+.field-advice {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  border-left: 3px solid var(--color-blue-200, #bfdbfe);
+  padding-left: var(--space-3);
+}
+
+.field-advice-toggle {
+  list-style: none;
+  cursor: pointer;
+  font-style: italic;
+  color: var(--color-text-muted);
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+/* Suppress default <summary> marker and add custom arrow */
+.field-advice-toggle::-webkit-details-marker { display: none; }
+.field-advice-toggle::marker { display: none; }
+
+.field-advice-toggle::before {
+  content: '▶';
+  font-size: 0.6rem;
+  transition: transform var(--transition-fast);
+  display: inline-block;
+}
+
+.field-advice[open] .field-advice-toggle::before {
+  transform: rotate(90deg);
+}
+
+.field-advice-body {
+  padding-top: var(--space-2);
+  line-height: var(--line-height-base);
+}
+
+.field-advice-body p {
+  margin-bottom: var(--space-2);
+}
+
+.field-advice-body p:last-child {
+  margin-bottom: 0;
+}
+
+/* --- Textarea --------------------------------------------- */
 textarea {
   width: 100%;
-  min-height: 120px;
+  min-height: 100px;
   padding: var(--space-3) var(--space-4);
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   font-size: var(--font-size-base);
   line-height: var(--line-height-base);
   color: var(--color-text);
@@ -246,11 +477,12 @@ textarea::placeholder {
   opacity: 0.7;
 }
 
+/* --- Select ----------------------------------------------- */
 select {
   width: 100%;
   padding: var(--space-2) var(--space-4);
   padding-right: var(--space-7);
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   font-size: var(--font-size-sm);
   color: var(--color-text);
   background-color: var(--color-surface);
@@ -273,7 +505,7 @@ select:focus {
 
 /* --- Buttons ---------------------------------------------- */
 button {
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   font-size: var(--font-size-base);
   font-weight: 600;
   border: none;
@@ -291,224 +523,6 @@ button:active {
   transform: translateY(1px);
 }
 
-#submit-btn {
-  width: 100%;
-  padding: var(--space-4) var(--space-5);
-  background: var(--color-primary);
-  color: #ffffff;
-  letter-spacing: 0.01em;
-}
-
-#submit-btn:hover {
-  background: var(--color-primary-hover);
-  box-shadow: 0 4px 12px rgba(30, 58, 95, 0.25);
-}
-
-#cancel-btn {
-  width: 100%;
-  padding: var(--space-3) var(--space-5);
-  background: transparent;
-  color: var(--color-text-muted);
-  border: 1.5px solid var(--color-border);
-  margin-top: var(--space-2);
-}
-
-#cancel-btn:hover {
-  background: var(--color-bg);
-  color: var(--color-text);
-  border-color: var(--color-text-muted);
-}
-
-#edit-btn {
-  padding: var(--space-3) var(--space-6);
-  background: transparent;
-  color: var(--color-accent);
-  border: 1.5px solid var(--color-accent);
-}
-
-#edit-btn:hover {
-  background: var(--color-accent);
-  color: #ffffff;
-}
-
-.form-actions {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-  padding-top: var(--space-2);
-}
-
-/* --- Story Narrative -------------------------------------- */
-.story-narrative {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-1);
-  margin-bottom: var(--space-6);
-}
-
-.story-field {
-  background: var(--color-surface);
-  border: 1.5px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: var(--space-5);
-}
-
-.story-field h2 {
-  font-size: var(--font-size-xs);
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-  margin-bottom: var(--space-3);
-}
-
-.field-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: var(--space-3);
-  margin-bottom: var(--space-3);
-}
-
-.field-header h2 {
-  margin-bottom: 0;
-}
-
-.field-content {
-  font-size: var(--font-size-lg);
-  line-height: var(--line-height-base);
-  color: var(--color-text);
-  white-space: pre-wrap;
-  word-break: break-word;
-}
-
-.empty-placeholder {
-  font-style: italic;
-  color: var(--color-text-muted);
-  font-size: var(--font-size-base);
-}
-
-/* --- Status Badges ---------------------------------------- */
-.status-badge {
-  display: inline-block;
-  font-size: var(--font-size-xs);
-  font-weight: 600;
-  padding: var(--space-1) var(--space-2);
-  border-radius: var(--space-1);
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-.badge-unsure {
-  background: var(--color-unsure-bg);
-  color: var(--color-unsure-text);
-  border: 1px solid var(--color-unsure-border);
-}
-
-.badge-needs-review {
-  background: var(--color-review-bg);
-  color: var(--color-review-text);
-  border: 1px solid var(--color-review-border);
-}
-
-.badge-confirmed {
-  background: var(--color-confirmed-bg);
-  color: var(--color-confirmed-text);
-  border: 1px solid var(--color-confirmed-border);
-}
-
-/* --- Feedback Sections (Consistency + Coaching) ----------- */
-.feedback-section {
-  background: var(--color-surface);
-  border: 1.5px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: var(--space-5);
-  margin-bottom: var(--space-4);
-}
-
-.feedback-section h2 {
-  font-size: var(--font-size-xs);
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-  margin-bottom: var(--space-4);
-}
-
-/* --- Consistency ------------------------------------------ */
-#consistency-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-}
-
-#consistency-list li {
-  padding: var(--space-3) var(--space-4);
-  border-radius: var(--radius-sm);
-  border-left: 3px solid var(--color-border);
-  font-size: var(--font-size-sm);
-  line-height: var(--line-height-base);
-  background: var(--color-bg);
-}
-
-#consistency-list li strong {
-  display: block;
-  font-size: var(--font-size-xs);
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  margin-bottom: var(--space-1);
-  color: var(--color-text-muted);
-}
-
-.obs-connected    { border-left-color: var(--color-connected-border); }
-.obs-disconnect   { border-left-color: var(--color-disconnect-border); }
-.obs-too-short    { border-left-color: var(--color-tooshort-border); }
-.obs-incomplete   { border-left-color: var(--color-incomplete-border); }
-
-/* --- Coaching --------------------------------------------- */
-.coaching-group {
-  margin-bottom: var(--space-5);
-}
-
-.coaching-group:last-child {
-  margin-bottom: 0;
-}
-
-.coaching-group h3 {
-  font-size: var(--font-size-xs);
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-  margin-bottom: var(--space-3);
-}
-
-.coaching-group ul {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-}
-
-.prompt-item {
-  font-size: var(--font-size-sm);
-  line-height: var(--line-height-base);
-  font-style: italic;
-  color: var(--color-text);
-  padding: var(--space-3) var(--space-4);
-  border-left: 3px solid var(--color-blue-400);
-  background: var(--color-blue-50);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-}
-
-/* --- Story Actions ---------------------------------------- */
-.story-actions {
-  display: flex;
-  justify-content: center;
-  padding: var(--space-4) 0 var(--space-6);
-}
-
 /* --- View Transition -------------------------------------- */
 .left-pane,
 .right-pane {
@@ -520,126 +534,8 @@ button:active {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* --- Form actions layout ---------------------------------- */
-.form-actions {
-  flex-direction: row;
-  align-items: center;
-}
-
-#submit-btn {
-  min-width: 180px;
-}
-
-#cancel-btn {
-  margin-top: 0;
-  margin-left: var(--space-3);
-  width: auto;
-}
-
 /* ============================================================
-   WAVE NAVIGATION BAR (T050)
-   ============================================================ */
-
-.wave-nav {
-  display: flex;
-  gap: var(--space-3);
-  padding: var(--space-4) var(--space-6);
-  background: var(--color-surface);
-  border-bottom: 1.5px solid var(--color-border);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  flex-shrink: 0;
-}
-
-.wave-card {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-  padding: var(--space-4);
-  border-radius: var(--radius-md);
-  border: 1.5px solid var(--color-border);
-  background: var(--color-surface);
-}
-
-.wave-card--active {
-  border-color: var(--color-blue-500);
-  border-top: 3px solid var(--color-blue-600);
-  background: var(--color-blue-50);
-}
-
-.wave-card--inactive {
-  opacity: 0.45;
-  cursor: not-allowed;
-  pointer-events: none;
-}
-
-.wave-card-body {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.wave-label {
-  font-size: var(--font-size-xs);
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-}
-
-.wave-card--active .wave-label {
-  color: var(--color-blue-600);
-}
-
-.wave-title {
-  font-size: var(--font-size-base);
-  font-weight: 700;
-  color: var(--color-text);
-  line-height: var(--line-height-tight);
-}
-
-.wave-subtitle {
-  font-size: var(--font-size-xs);
-  color: var(--color-text-muted);
-  line-height: 1.4;
-}
-
-/* ============================================================
-   WAVE PROGRESS STEPS (T052)
-   ============================================================ */
-
-.wave-progress {
-  display: flex;
-  gap: var(--space-2);
-  flex-wrap: wrap;
-  margin-top: var(--space-1);
-}
-
-.wave-step {
-  font-size: 0.7rem;
-  font-weight: 500;
-  padding: 2px var(--space-2);
-  border-radius: 99px;
-  background: var(--color-bg);
-  color: var(--color-text-muted);
-  border: 1px solid var(--color-border);
-  transition: background-color var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
-}
-
-.wave-step--filled {
-  background: var(--color-green-100);
-  color: var(--color-green-700);
-  border-color: var(--color-green-500);
-}
-
-.wave-step--inactive {
-  opacity: 0.5;
-}
-
-/* ============================================================
-   RIGHT PANE — STORY PREVIEW (T056)
+   RIGHT PANE — STORY PREVIEW (US2)
    ============================================================ */
 
 #story-preview {
@@ -647,6 +543,7 @@ button:active {
 }
 
 .preview-heading {
+  font-family: var(--font-display);
   font-size: var(--font-size-lg);
   font-weight: 700;
   letter-spacing: -0.01em;
@@ -661,35 +558,52 @@ button:active {
   margin-bottom: var(--space-5);
 }
 
-.preview-field {
+/* New preview blocks (v0.2) */
+.preview-block {
   background: var(--color-surface);
   border: 1.5px solid var(--color-border);
   border-radius: var(--radius-lg);
   padding: var(--space-4) var(--space-5);
 }
 
-.preview-field-label {
+.preview-label {
+  font-family: var(--font-body);
   font-size: var(--font-size-xs);
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-text-muted);
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-2);
 }
 
 .preview-content {
+  font-family: var(--font-body);
   font-size: var(--font-size-base);
   line-height: var(--line-height-base);
   color: var(--color-text);
   white-space: pre-wrap;
   word-break: break-word;
-  min-height: 1.5rem;
+}
+
+.preview-placeholder {
+  color: var(--color-text-muted);
+  font-style: italic;
+  font-size: var(--font-size-sm);
+  margin-top: var(--space-2);
 }
 
 .preview-placeholder-text {
   font-style: italic;
   color: var(--color-text-muted);
   font-size: var(--font-size-sm);
+}
+
+/* Status badge (emoji) in preview */
+.status-badge {
+  display: inline-block;
+  font-size: 1rem;
+  margin-left: var(--space-2);
+  vertical-align: middle;
 }
 
 /* Fake door placeholder sections */

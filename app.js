@@ -5,13 +5,11 @@
 'use strict';
 
 /* ============================================================
-   PHASE 2 — FOUNDATIONAL
+   SESSION STORAGE
    ============================================================ */
 
-/* --- Session Storage Wrapper ------------------------------ */
-
 const SESSION_KEY = 'leanstory_session';
-let _memoryFallback = null;  // in-memory store when sessionStorage unavailable
+let _memoryFallback = null;
 let _storageAvailable = true;
 
 function _testStorage() {
@@ -26,12 +24,10 @@ function _testStorage() {
 
 function loadSession() {
   if (_memoryFallback) return Object.assign({}, _memoryFallback);
-
   try {
     const raw = sessionStorage.getItem(SESSION_KEY);
     if (!raw) return createStory();
-    const parsed = JSON.parse(raw);
-    return normaliseStory(parsed);
+    return normaliseStory(JSON.parse(raw));
   } catch (_) {
     return createStory();
   }
@@ -46,7 +42,6 @@ function saveSession(story) {
   try {
     sessionStorage.setItem(SESSION_KEY, JSON.stringify(clean));
   } catch (_) {
-    // quota or security error — fall back to memory
     _memoryFallback = Object.assign({}, clean);
     _storageAvailable = false;
     showStorageNotice();
@@ -58,352 +53,258 @@ function showStorageNotice() {
   if (el) el.hidden = false;
 }
 
-/* --- Story Object Factory --------------------------------- */
+/* ============================================================
+   STORY SCHEMA
+   ============================================================ */
 
 function createStory() {
   return {
-    target: '',        targetStatus: null,
-    problem: '',       problemStatus: null,
-    solution: '',      solutionStatus: null,
+    target: '',            targetStatus: null,
+    problem: '',           problemStatus: null,
+    solution: '',          solutionStatus: null,
+    empathy: '',           empathyStatus: null,
+    consequences: '',      consequencesStatus: null,
+    benefits: '',          benefitsStatus: null,
+    context: '',           contextStatus: null,
+    why: '',               whyStatus: null,
+    storyTitle: '',
   };
 }
 
-/**
- * Trims all string fields.
- * Resets *Status to null if the paired content field is empty.
- */
+const VALID_STATUSES = new Set(['unsure', 'needs-review', 'confirmed', null]);
+const CONTENT_FIELDS = ['target', 'problem', 'solution', 'empathy', 'consequences', 'benefits', 'context', 'why'];
+
 function normaliseStory(story) {
   const s = Object.assign(createStory(), story);
-
-  s.target  = (s.target  || '').trim();
-  s.problem = (s.problem || '').trim();
-  s.solution = (s.solution || '').trim();
-
-  if (!s.target)   s.targetStatus  = null;
-  if (!s.problem)  s.problemStatus = null;
-  if (!s.solution) s.solutionStatus = null;
-
-  // ensure valid status values only
-  const VALID = new Set(['unsure', 'needs-review', 'confirmed', null]);
-  if (!VALID.has(s.targetStatus))   s.targetStatus   = null;
-  if (!VALID.has(s.problemStatus))  s.problemStatus  = null;
-  if (!VALID.has(s.solutionStatus)) s.solutionStatus = null;
-
+  CONTENT_FIELDS.forEach(field => {
+    s[field] = (s[field] || '').trim();
+    const statusKey = field + 'Status';
+    if (!s[field]) {
+      s[statusKey] = null;
+    } else if (!VALID_STATUSES.has(s[statusKey])) {
+      s[statusKey] = null;
+    }
+  });
+  s.storyTitle = (s.storyTitle || '').trim();
   return s;
 }
 
-/* --- View Router ------------------------------------------ */
-
-let _currentView = 'form';
-let _editMode = false;
-
-function showView(view) {
-  const formEl  = document.getElementById('form-view');
-  const storyEl = document.getElementById('story-view');
-  formEl.hidden  = (view !== 'form');
-  storyEl.hidden = (view !== 'story');
-  _currentView = view;
-}
-
-
 /* ============================================================
-   PHASE 3 — USER STORY 1: Fill the Basic Story
+   STORY TITLE
    ============================================================ */
 
-/* --- Form population -------------------------------------- */
+const TITLE_POOL = [
+  "The Resilient Leader's Turning Point",
+  "A Market Waiting for Its Hero",
+  "When Pressure Becomes Clarity",
+  "The Problem No One Named",
+  "Quiet Friction, Loud Consequences",
+  "A Solution Built from Empathy",
+  "The Moment Everything Changed",
+  "Complexity Reduced to One Truth",
+  "The Gap Between Vision and Reality",
+  "Where the Story Begins",
+];
 
-function populateForm(story) {
-  document.getElementById('target').value  = story.target  || '';
-  document.getElementById('problem').value = story.problem || '';
-  document.getElementById('solution').value = story.solution || '';
-
-  // US2: also populate status selectors
-  document.getElementById('target-status').value  = story.targetStatus  || '';
-  document.getElementById('problem-status').value = story.problemStatus || '';
-  document.getElementById('solution-status').value = story.solutionStatus || '';
+function renderStoryTitle(title) {
+  const display = document.getElementById('story-title-display');
+  const input = document.getElementById('story-title-input');
+  if (!display || !input) return;
+  display.textContent = title || '';
+  display.hidden = false;
+  input.hidden = true;
 }
 
-/* --- Empty-state guard ------------------------------------ */
+/* ============================================================
+   WAVE ROUTER
+   ============================================================ */
 
-function showEmptyHint(msg) {
-  const el = document.getElementById('empty-hint');
-  if (!el) return;
-  el.textContent = msg;
-  el.hidden = false;
-}
+let _currentWave = 'basic';
 
-function clearEmptyHint() {
-  const el = document.getElementById('empty-hint');
-  if (el) { el.hidden = true; el.textContent = ''; }
-}
+function setWave(wave) {
+  _currentWave = wave;
 
-/* --- Render story view ------------------------------------ */
-
-const STATUS_LABELS = {
-  'unsure':       'Unsure / Assumption',
-  'needs-review': 'Needs review',
-  'confirmed':    'Confirmed / Validated',
-};
-
-function renderField(sectionId, text, status) {
-  const section = document.getElementById(sectionId);
-  if (!section) return;
-
-  const header = section.querySelector('.field-header') || section.querySelector('h2').parentElement;
-  const h2 = section.querySelector('h2');
-  const contentEl = section.querySelector('.field-content');
-
-  // render content
-  if (text) {
-    contentEl.textContent = text;   // plain text only — no innerHTML — eliminates XSS
-  } else {
-    contentEl.innerHTML = '<em class="empty-placeholder">not yet filled</em>';
-  }
-
-  // render status badge (US2)
-  const existingBadge = section.querySelector('.status-badge');
-  if (existingBadge) existingBadge.remove();
-
-  if (status && STATUS_LABELS[status]) {
-    const badge = document.createElement('span');
-    badge.className = `status-badge badge-${status}`;
-    badge.textContent = STATUS_LABELS[status];
-    // insert badge after h2 inside .field-header wrapper
-    const fieldHeader = section.querySelector('.field-header');
-    if (fieldHeader) {
-      fieldHeader.appendChild(badge);
-    } else {
-      h2.insertAdjacentElement('afterend', badge);
-    }
-  }
-}
-
-function renderStoryView(story) {
-  renderField('view-target',   story.target,   story.targetStatus);
-  renderField('view-problem',  story.problem,  story.problemStatus);
-  renderField('view-solution', story.solution, story.solutionStatus);
-
-  // US3: consistency observations
-  renderConsistency(story);
-
-  // US5: coaching prompts
-  renderCoaching(story);
-
-  // Update right-pane live preview (two-column layout — form stays visible)
-  updateStoryPreview(story);
-}
-
-/* --- Submit handler --------------------------------------- */
-
-function handleSubmit(event) {
-  event.preventDefault();
-
-  const story = normaliseStory({
-    target:         document.getElementById('target').value,
-    targetStatus:   document.getElementById('target-status').value || null,
-    problem:        document.getElementById('problem').value,
-    problemStatus:  document.getElementById('problem-status').value || null,
-    solution:       document.getElementById('solution').value,
-    solutionStatus: document.getElementById('solution-status').value || null,
+  // Hide all form sections, show active
+  ['basic', 'detailed', 'full'].forEach(w => {
+    const section = document.getElementById(`${w}-form`);
+    if (section) section.hidden = (w !== wave);
   });
 
-  // Empty-state guard
-  if (!story.target && !story.problem && !story.solution) {
-    showEmptyHint('Fill at least one field to build your story.');
+  // Update active card class and aria-pressed
+  document.querySelectorAll('.wave-card').forEach(card => {
+    const isActive = card.dataset.wave === wave;
+    card.classList.toggle('wave-card--active', isActive);
+    card.setAttribute('aria-pressed', String(isActive));
+  });
+
+  // Collapse all advice <details>
+  document.querySelectorAll('.field-advice').forEach(d => d.removeAttribute('open'));
+
+  // Populate active form from session
+  populateForm(loadSession());
+
+  // Re-render right pane and progress
+  updateRightPane();
+  updateWaveProgress();
+}
+
+/* ============================================================
+   FORM POPULATION
+   ============================================================ */
+
+function populateForm(story) {
+  // Basic fields — always present in DOM across all waves
+  [
+    ['target', 'targetStatus'],
+    ['problem', 'problemStatus'],
+    ['solution', 'solutionStatus'],
+    ['empathy', 'empathyStatus'],
+    ['consequences', 'consequencesStatus'],
+    ['benefits', 'benefitsStatus'],
+    ['context', 'contextStatus'],
+    ['why', 'whyStatus'],
+  ].forEach(([field, statusField]) => {
+    const textarea = document.getElementById(field);
+    const select = document.getElementById(`${field}-status`);
+    if (textarea) textarea.value = story[field] || '';
+    if (select) select.value = story[statusField] || '';
+  });
+}
+
+/* ============================================================
+   SESSION READ-FROM-DOM
+   ============================================================ */
+
+function readStoryFromDOM() {
+  const s = loadSession();
+  CONTENT_FIELDS.forEach(field => {
+    const textarea = document.getElementById(field);
+    const select = document.getElementById(`${field}-status`);
+    if (textarea) s[field] = textarea.value;
+    if (select) s[field + 'Status'] = select.value || null;
+  });
+  return s;
+}
+
+/* ============================================================
+   RIGHT-PANE PREVIEW
+   ============================================================ */
+
+const STATUS_EMOJI = {
+  unsure: '🤔',
+  'needs-review': '🔄',
+  confirmed: '✅',
+};
+
+const FIELD_LABELS = {
+  target: 'Target',
+  problem: 'Problem',
+  solution: 'Solution',
+  empathy: 'Empathy',
+  consequences: 'Consequences',
+  benefits: 'Benefits',
+  context: 'Context',
+  why: 'Why',
+};
+
+const WAVE_FIELDS = {
+  basic:    ['target', 'problem', 'solution'],
+  detailed: ['target', 'empathy', 'problem', 'consequences', 'solution', 'benefits'],
+  full:     ['context', 'target', 'empathy', 'problem', 'consequences', 'solution', 'benefits', 'why'],
+};
+
+function updateRightPane() {
+  const story = loadSession();
+  const narrative = document.querySelector('.preview-narrative');
+  if (!narrative) return;
+
+  const fields = WAVE_FIELDS[_currentWave];
+  const allEmpty = fields.every(f => !story[f]);
+
+  narrative.innerHTML = '';
+
+  if (allEmpty) {
+    const p = document.createElement('p');
+    p.className = 'preview-placeholder-text';
+    p.textContent = 'Your story will appear here — fill the form on the left to get started.';
+    narrative.appendChild(p);
     return;
   }
 
-  saveSession(story);
-  clearEmptyHint();
-
-  if (_editMode) exitEditMode(true, story);
-  else renderStoryView(story);
-}
-
-
-/* ============================================================
-   PHASE 5 — USER STORY 3: Consistency Observations
-   ============================================================ */
-
-function renderConsistency(story) {
-  const list = document.getElementById('consistency-list');
-  if (!list) return;
-  list.innerHTML = '';
-
-  const observations = getObservations(story);  // from consistency.js
-
-  observations.forEach(obs => {
-    const li = document.createElement('li');
-    li.className = `obs-${obs.type}`;
-
-    const label = document.createElement('strong');
-    label.textContent = obs.pair === 'target-problem' ? 'Target → Problem' : 'Problem → Solution';
-
-    const msg = document.createElement('span');
-    msg.textContent = obs.message.replace(/^[^:]+:\s*/, ''); // strip the pair prefix already in label
-
-    li.appendChild(label);
-    li.appendChild(msg);
-    list.appendChild(li);
-  });
-}
-
-
-/* ============================================================
-   PHASE 6 — USER STORY 4: Review & Edit
-   ============================================================ */
-
-function enterEditMode() {
-  _editMode = true;
-  populateForm(loadSession());
-
-  const cancelBtn = document.getElementById('cancel-btn');
-  const submitBtn = document.getElementById('submit-btn');
-  if (cancelBtn) cancelBtn.hidden = false;
-  if (submitBtn) submitBtn.textContent = 'Update story';
-
-  showView('form');
-}
-
-function exitEditMode(save, story) {
-  _editMode = false;
-
-  const cancelBtn = document.getElementById('cancel-btn');
-  const submitBtn = document.getElementById('submit-btn');
-  if (cancelBtn) cancelBtn.hidden = true;
-  if (submitBtn) submitBtn.textContent = 'View my story';
-
-  if (save && story) {
-    renderStoryView(story);
-  } else {
-    renderStoryView(loadSession());
-  }
-}
-
-function handleCancel() {
-  exitEditMode(false, null);
-}
-
-
-/* ============================================================
-   PHASE 7 — USER STORY 5: Coaching Prompts
-   ============================================================ */
-
-/**
- * Fisher-Yates shuffle (in-place). Uses content length as a simple
- * deterministic seed so prompts stay consistent within a session
- * for the same content, but vary across different content.
- */
-function shuffleArray(arr, seed) {
-  const a = arr.slice();
-  let s = seed % (a.length || 1);
-  for (let i = a.length - 1; i > 0; i--) {
-    s = (s * 1664525 + 1013904223) & 0xffffffff;
-    const j = Math.abs(s) % (i + 1);
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
-
-function selectPrompts(story) {
-  const result = {};
-  const fields = ['target', 'problem', 'solution'];
-
   fields.forEach(field => {
-    const content = story[field];
-    if (!content) { result[field] = []; return; }
-
-    const statusKey = story[`${field}Status`] || 'default';
-    const bucket = (PROMPTS[field][statusKey] && PROMPTS[field][statusKey].length)
-      ? PROMPTS[field][statusKey]
-      : PROMPTS[field].default;
-
-    const shuffled = shuffleArray(bucket, content.length);
-    result[field] = shuffled.slice(0, 3);
-  });
-
-  return result;
-}
-
-function renderCoaching(story) {
-  const fields = ['target', 'problem', 'solution'];
-  const selected = selectPrompts(story);
-
-  fields.forEach(field => {
-    const container = document.getElementById(`coaching-${field}`);
-    if (!container) return;
-
-    const prompts = selected[field];
-    if (!prompts || prompts.length === 0) {
-      container.hidden = true;
-      container.innerHTML = '';
-      return;
-    }
-
-    const label = field.charAt(0).toUpperCase() + field.slice(1);
-    const ul = document.createElement('ul');
-    prompts.forEach(text => {
-      const li = document.createElement('li');
-      li.className = 'prompt-item';
-      li.textContent = text;  // plain text — no innerHTML
-      ul.appendChild(li);
-    });
-
-    container.innerHTML = '';
-    const h3 = document.createElement('h3');
-    h3.textContent = label;
-    container.appendChild(h3);
-    container.appendChild(ul);
-    container.hidden = false;
-  });
-}
-
-
-/* ============================================================
-   PHASE 9 — UX REDESIGN: Wave Navigation & Story Preview
-   ============================================================ */
-
-/* --- Right Pane Story Preview (T057) ---------------------- */
-
-function updateStoryPreview(story) {
-  const fields = ['target', 'problem', 'solution'];
-  const allEmpty = !story.target && !story.problem && !story.solution;
-
-  fields.forEach((field, idx) => {
-    const container = document.getElementById(`preview-${field}`);
-    if (!container) return;
-    const contentEl = container.querySelector('.preview-content');
-    if (!contentEl) return;
-
     const text = story[field];
-    contentEl.textContent = '';  // clear previous content
+    const status = story[field + 'Status'];
+
+    const block = document.createElement('div');
+    block.className = 'preview-block';
+    block.id = `preview-${field}`;
+
+    const label = document.createElement('h3');
+    label.className = 'preview-label';
+    label.textContent = FIELD_LABELS[field];
+    block.appendChild(label);
+
+    if (status && STATUS_EMOJI[status]) {
+      const badge = document.createElement('span');
+      badge.className = 'status-badge';
+      badge.textContent = STATUS_EMOJI[status];
+      block.appendChild(badge);
+    }
 
     if (text) {
-      contentEl.textContent = text;  // plain text only — no innerHTML — eliminates XSS
+      const content = document.createElement('p');
+      content.className = 'preview-content';
+      content.textContent = text;  // plain text — no innerHTML — XSS safe
+      block.appendChild(content);
     } else {
-      const p = document.createElement('p');
-      p.className = 'preview-placeholder-text';
-      p.textContent = (idx === 0 && allEmpty)
-        ? 'Your story will appear here — fill the form on the left to get started.'
-        : '—';
-      contentEl.appendChild(p);
+      const placeholder = document.createElement('p');
+      placeholder.className = 'preview-placeholder';
+      placeholder.textContent = '—';
+      block.appendChild(placeholder);
     }
+
+    narrative.appendChild(block);
   });
 }
 
-/* --- Wave 1 Progress Bar Step Update (T058) --------------- */
+/* ============================================================
+   WAVE PROGRESS BARS
+   ============================================================ */
+
+const WAVE_STEP_FIELDS = {
+  basic:    ['target', 'problem', 'solution'],
+  detailed: ['empathy', 'consequences', 'benefits'],
+  full:     ['context', 'why'],
+};
 
 function updateWaveProgress() {
-  const fields = ['target', 'problem', 'solution'];
-  fields.forEach(field => {
-    const step = document.querySelector(`.wave-step[data-step="${field}"]`);
-    if (!step) return;
-    const textarea = document.getElementById(field);
-    const filled = Boolean(textarea && textarea.value.trim());
-    step.classList.toggle('wave-step--filled', filled);
+  const story = loadSession();
+
+  Object.entries(WAVE_STEP_FIELDS).forEach(([wave, fields]) => {
+    fields.forEach(field => {
+      const step = document.querySelector(`.wave-step[data-wave="${wave}"][data-field="${field}"]`);
+      if (!step) return;
+
+      const filled = Boolean(story[field]);
+      const status = story[field + 'Status'];
+      const fieldLabel = FIELD_LABELS[field];
+
+      step.classList.toggle('wave-step--filled', filled);
+
+      if (!filled) {
+        step.textContent = '';
+        step.setAttribute('aria-label', `${fieldLabel}: empty`);
+      } else if (status && STATUS_EMOJI[status]) {
+        step.textContent = STATUS_EMOJI[status];
+        const stateMap = { unsure: 'unsure', 'needs-review': 'needs review', confirmed: 'confirmed' };
+        step.setAttribute('aria-label', `${fieldLabel}: filled, ${stateMap[status]}`);
+      } else {
+        step.textContent = '✓';
+        step.setAttribute('aria-label', `${fieldLabel}: filled`);
+      }
+    });
   });
 }
-
 
 /* ============================================================
    INITIALISATION
@@ -411,49 +312,97 @@ function updateWaveProgress() {
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // Set up storage (detect availability)
+  // Set up storage
   _storageAvailable = _testStorage();
   if (!_storageAvailable) {
     _memoryFallback = createStory();
     showStorageNotice();
   }
 
-  // Pre-fill form from session (handles page reload within session)
-  const session = loadSession();
-  populateForm(session);
+  // Load session; assign random title on first load
+  let session = loadSession();
+  if (!session.storyTitle) {
+    session.storyTitle = TITLE_POOL[Math.floor(Math.random() * TITLE_POOL.length)];
+    saveSession(session);
+  }
+  renderStoryTitle(session.storyTitle);
 
-  // Initialise right-pane preview and wave progress from session
-  updateStoryPreview(session);
-  updateWaveProgress();
+  // Initialise wave to basic
+  setWave('basic');
 
-  // Wire up form submit
-  const form = document.getElementById('story-form');
-  if (form) form.addEventListener('submit', handleSubmit);
+  // Wire wave card clicks and keyboard activation
+  document.querySelectorAll('.wave-card').forEach(card => {
+    card.addEventListener('click', () => setWave(card.dataset.wave));
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        setWave(card.dataset.wave);
+      }
+    });
+  });
 
-  // Wire up input events: clear empty-hint + update wave progress
-  ['target', 'problem', 'solution'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.addEventListener('input', clearEmptyHint);
-      el.addEventListener('input', updateWaveProgress);
+  // Wire all textarea input and select change events
+  CONTENT_FIELDS.forEach(field => {
+    const textarea = document.getElementById(field);
+    const select = document.getElementById(`${field}-status`);
+
+    if (textarea) {
+      textarea.addEventListener('input', () => {
+        saveSession(readStoryFromDOM());
+        updateRightPane();
+        updateWaveProgress();
+      });
+    }
+
+    if (select) {
+      select.addEventListener('change', () => {
+        saveSession(readStoryFromDOM());
+        updateRightPane();
+        updateWaveProgress();
+      });
     }
   });
 
-  // Wire up Edit button
-  const editBtn = document.getElementById('edit-btn');
-  if (editBtn) editBtn.addEventListener('click', enterEditMode);
+  // Wire story title edit mode
+  const titleDisplay = document.getElementById('story-title-display');
+  const titleInput = document.getElementById('story-title-input');
 
-  // Wire up Cancel button
-  const cancelBtn = document.getElementById('cancel-btn');
-  if (cancelBtn) cancelBtn.addEventListener('click', handleCancel);
+  if (titleDisplay && titleInput) {
+    let _previousTitle = session.storyTitle;
+
+    titleDisplay.addEventListener('click', () => {
+      _previousTitle = loadSession().storyTitle;
+      titleInput.value = _previousTitle;
+      titleDisplay.hidden = true;
+      titleInput.hidden = false;
+      titleInput.focus();
+      titleInput.select();
+    });
+
+    const commitTitle = () => {
+      const newTitle = titleInput.value.trim();
+      const s = loadSession();
+      s.storyTitle = newTitle;
+      saveSession(s);
+      renderStoryTitle(newTitle);
+    };
+
+    titleInput.addEventListener('blur', commitTitle);
+
+    titleInput.addEventListener('keydown', e => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        commitTitle();
+      } else if (e.key === 'Escape') {
+        renderStoryTitle(_previousTitle);
+      }
+    });
+  }
 
   // Register service worker
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/service-worker.js').catch(() => {
-      // SW registration failure is non-fatal — app still works online
+      // SW registration failure is non-fatal
     });
   }
-
-  // Start in form view
-  showView('form');
 });
