@@ -19,11 +19,7 @@ What is it? What for? What's in it for me? How do I start? Read more below...
 
 1. Why?
 2. Methodology overview
-    - Build
-    - Extend
-    - Deliver
-4. Q&A / FAQ
-Overview
+3. Q&A / FAQ
 
 ---
 
@@ -66,7 +62,7 @@ Become crystal clear in your communication, impact more, influence harder.
 
 ---
 
-## Methodology overview
+## Methodology overview: quick start & usage
 
 ### Build your story
 
@@ -222,6 +218,14 @@ Audience
 
     classDef default fill:#f8f9fa,stroke:#333,stroke-width:2px,rx:8,ry:8;
 ```
+
+### Go further now: Getting started!
+
+Ask for workshop
+
+Use the Canvas
+
+Use the experimental app
 
 --- 
 
