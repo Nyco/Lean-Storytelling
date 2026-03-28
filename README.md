@@ -1,23 +1,39 @@
-# Lean Storytelling: deliver compelling business stories
+# Lean Storytelling
+
+**Craft and deliver** compelling, efficient, convincing **stories** about your business, service, or product!
 
 **Lean Storytelling**:
 
-- Shape, structure, and refine the story you tell, about your business/product/service.
-- Specialise and deliver your stories in various formats, and different audiences.
+- **Shape and structure** your story, with the foundational building blocks, to **setup the core**.
+- **Extend and complete** your story, with additional elements, and complexity, to **fine-tune**.
+- **Specialise and deliver** your story, in various formats to different audiences, for **influence and leadership**.
 
-Canvas and Methodology (and upcoming book) under [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](http://creativecommons.org/licenses/by-sa/4.0/)
+> [!IMPORTANT]
+> Learn fast, practice hard, get feedback, try again.
 
-App under AGPLv3
+What is it? What for? What's in it for me? How do I start? Read more below...
 
-## Why "Lean Storytelling"?
+---
 
-So that people communicate and listen, in a standard and proven manner, the way humans have told stories since the dawn of humanity, by giving and taking stories, living the feeling of adventure.
+## Table of Contents
 
-## Who it is indended for
+1. Why?
+2. Methodology overview
+3. Q&A / FAQ
 
-Lean Storytelling is designed for leaders and managers who want to be much more efficient in their business and tech communication style.
+---
 
-## How this works
+## Why?
+
+### Core motivation
+
+It was made, battled-tested, and refined so that people communicate clearly, in a standard and proven manner, the way humans have told stories since the dawn of humanity, by giving and taking stories, living the feeling of adventure.
+
+### Who it is indended for
+
+Lean Storytelling is designed for leaders and managers who want to be much more efficient in their communication style.
+
+### How this works
 
 Shape and structure your story, given the widely used, but implicit ingredients.
 Then deliver your story in any format or context.
@@ -25,97 +41,141 @@ Then deliver your story in any format or context.
 People know how to "receive" a story, as they are used to "receiving" novels, series, movies...
 But people have difficulties to properly "send" stories by respecting the untold, implicit secrets, that humanity has used since forever.
 
-## What Lean Storytelling Is
+### What Lean Storytelling is really
 
 **Lean Storytelling** is a structured technique for crafting clear, compelling stories—especially for business, product, and service contexts. It draws on best practices to ensure your audience understands, resonates, and remembers your message.
 
-**Key Characteristics:**
-- A practical set of recipes and templates to shape your story
-- Easy to learn, but challenging to master—requiring practice and iteration
-- Designed for business, product, and feature development (not for screenwriting or novel writing)
-- Applicable from early-stage empathy and problem discovery through to delivery, testing, and communication
-- Helps align teams, reduce friction, and clarify the "why" behind your story
-- Inspired by Lean Canvas, the Monomyth (Hero’s Journey), and The Golden Circle
-- Rooted in Agile, Lean Startup, Design Thinking, UX research, and entrepreneurship
-- Intentionally simple, minimalist, and systemic in approach
+> [!NOTE]
+>  It is easy to learn, but challenging to master, requiring careful practice, learning from your audience, and persistence.
+
+Lean Storytelling has been crafted for business, product, and service: whether you want pitch or test an idea, refine and develop , or delierv and promote
+development and promotion
+
+> [!CAUTION]
+> Not for screenwriting or novel writing.
+
+This helps align teams, reduce friction, and clarify the "why" behind any story.
+
+### What's in it for me?
+
+Become crystal clear in your communication, impact more, influence harder.
 
 ---
 
-## Overview of the playbook
+## Methodology overview: quick start & usage
 
-**Core Principles:**
-- Start with the basic story ingredients
-- Add details to thicken the plot
-- Polish with the finishing touch
-- Continuously test, learn, and adapt based on feedback
-- Refine your story to its essence
-- For advanced storytelling, use the Extension Pack
-- This method is lean and agile, tailored for business—not generic storytelling
-
----
-
-## Story building
-
-### 1. Basic Story
-
-Setup the mandatory bricks
-
-**Foundational Elements:**
-- **Target**: The user or buyer—the hero of your story, the one who experiences transformation
-- **Problem**: The challenge or antagonism your target faces
-- **Solution**: Your offering (keep it concise; avoid over-explaining)
-
----
-
-### 2. Detailed Story
-
-Enrich with necessary information
-
-**Enhanced Elements:**
-- **Target**
-  - **Empathy**: What the target sees, feels, hears, and says
-- **Problem**
-  - **Consequences**: How the problem impacts the target’s daily life, the pain that is felt
-- **Solution**
-  - **Benefits**: The tangible advantages your solution provides
-
----
-
-### 3. Full Story
-
-Finish your structure with valuable content
-
-**Contextualized Elements:**
-- **Context**: The environment in which the target operates
-- **Target** (Empathy)
-- **Problem** (Consequences)
-- **Solution** (Benefits)
-- **Why**: The core motivation or guiding principle behind your story
-
----
-
-## Story Delivery
-
-After you have finished structuring your story,...
-
-### Story Sequencing
-
-Deliver it in this specific order:
+### Build your story
 
 ```mermaid
 flowchart TD
-    Context{{Context}}-->Target["`**Target**`"]
-    Target-->Empathy([Empathy])
-    Empathy-->Problem["`**Problem**`"]
-    Problem-->Consequences([Consequences])
-    Consequences-->Solution["`**Solution**`"]
-    Solution-->Benefits([Benefits])
-    Benefits-->Why{{Why}}
+    Basic{{"`*Basic
+    Story*`"}}-->TargetB["`**Target**`"]
+    TargetB-->ProblemB["`**Problem**`"]
+    ProblemB-->SolutionB["`**Solution**`"]
+    SolutionB
+    
+    Detailed{{"`*Detailed
+    Story*`"}}-->TargetD["`**Target**`"]
+    TargetD-->EmpathyD([Empathy])
+    EmpathyD-->ProblemD["`**Problem**`"]
+    ProblemD-->ConsequencesD([Consequences])
+    ConsequencesD-->SolutionD["`**Solution**`"]
+    SolutionD-->BenefitsD([Benefits])
+    BenefitsD
+
+    Full{{"`*Full
+    Story*`"}}-->ContextF
+    ContextF{{Context}}-->TargetF["`**Target**`"]
+    TargetF-->EmpathyF([Empathy])
+    EmpathyF-->ProblemF["`**Problem**`"]
+    ProblemF-->ConsequencesF([Consequences])
+    ConsequencesF-->SolutionF["`**Solution**`"]
+    SolutionF-->BenefitsF([Benefits])
+    BenefitsF-->WhyF{{Why}}
+    WhyF
 
     classDef default fill:#f8f9fa,stroke:#333,stroke-width:2px,rx:8,ry:8;
 ```
 
-### Formats
+#### Basic Story
+
+- **Target**: The user, the client, the buyer—the hero of your story, the one who experiences transformation
+- **Problem**: The challenge or antagonism your Target faces
+- **Solution**: Your offering (keep it concise; avoid over-explaining)
+
+> [!IMPORTANT]
+> The hero is essential to storytelling, in this context we are client-centric.
+
+> [!CAUTION]
+> Stay concise, if not laconic, about the Solution.
+
+#### Detailed Story
+
+- Target
+  - **Empathy**: What the Target sees, feels, hears, and says
+- Problem
+  - **Consequences**: How the Problem impacts the target’s daily life, the pain that is felt
+- Solution
+  - **Benefits**: The tangible advantages your Solution provides to the Target
+
+> [!TIP]
+> Express Problem as a positive sentence form, not a negative way: "Problem is the lack og my Solution".
+ 
+> [!WARNING]
+> The Solution may not mean anything to your audience, rather explicit the ture Benefits and advantges.
+
+
+#### Full Story
+
+- **Context**: The environment in which the Target operates
+- Target
+    - Empathy
+- Problem
+    - Consequences
+- Solution
+   - Benefits
+- **Why**: The core motivation or guiding principle behind your story
+
+> [!NOTE]
+> The hero returns from the adventure with a magic wand, light saber, or wisdom: what transformation has the Target undergo?
+
+
+### Extend your story
+
+#### Addons
+
+In case an option is absolutely needed, and you can't live without:
+
+**Optional Additions (use as needed):**
+- **Challenge**: Pose an open question to engage your audience
+- **Quote**: Validate an element with a relevant quote
+- **Data**: Bring facts and figures that proves your point 
+- **Alternatives**: Highlight unsatisfactory solutions the hero has tried
+- **Competition**: Acknowledge competitors, but emphasize why your solution is superior
+- **Unfair Advantage**: What makes your solution uniquely effective, and difficult to imitate
+- **Warnings**: Potential pitfalls or risks
+- **Self-Benefits**: How you also benefit from the solution
+- **Call to Action**: What you want your audience to do next
+- **Failure**: Share a past failure or setback to build credibility and context
+- **Same-same**: The same type of people have lived the same story
+
+#### Complex Story
+
+Use with extreme care:
+
+- In one story:
+    - Use extension pack
+    - Target multiple personas
+    - Address multiple problems
+    - Bring multiple Solutions
+- Blend story arcs:
+    - Merge stories with multiple common elements
+    - Cross-over stories in the same timeline/universe
+    - Sub-story or "mise en abyme"
+
+### Deliver your story
+
+#### Formats
 
 Adapt your stories to various constraints:
 - Text: ASCII, PDF, ODF
@@ -123,69 +183,49 @@ Adapt your stories to various constraints:
 - Videos
 - Hybrid: slidedecks, illusrated texts
 
-### Audiences
+#### Audiences
 
 Specialise story to:
 - Stakeholders
 - Buyers
 - Investors
+- Collaborators
 
----
+### A picture is worth a thousand words
 
-## Extension Pack
+Build + Extend + Deliver = Get feedback and restart!
 
-### Extend you story
+```mermaid
+flowchart TD
+Build("`**Build**`")-->BasicXXX{{"`*Basic
+    Story*`"}}
+BasicXXX-->DetailedXXX{{"`*Detailed
+    Story*`"}}
+DetailedXXX-->FullXXX{{"`*Full
+    Story*`"}}
 
-In case an option is absolutely needed, and you can't live without:
+Extend("`**Extend**`")-->AddonXXX{{"`*Additionnal
+    elements*`"}}
+AddonXXX-->ComplexXXX{{"`*Complex
+    reality*`"}}
+ComplexXXX
 
-**Optional Additions (use as needed):**
-- **Challenge**: Pose an open question to engage your audience
-- **Quote**: Validate the problem or benefits with a relevant quote
-- **Alternatives**: Highlight unsatisfactory solutions the hero has tried
-- **Competition**: Acknowledge competitors, but emphasize why your solution is superior
-- **Unfair Advantage**: What makes your solution uniquely effective, and difficult to imitate
-- **Warnings**: Potential pitfalls or risks
-- **Self-Benefits**: How you also benefit from the solution
-- **Stages in AARRR**: Acquisition, Activation, Retention, Referral, Revenue
-- **Call to Action**: What you want your audience to do next
-- **Failure**: Share a past failure or setback to build credibility and context
+Deliver("`**Deliver**`")-->Format{{"`*Custom
+    Format*`"}}
+Format-->Audience{{"`*Specific
+    Audience*`"}}
+Audience
 
-### Complex Story
+    classDef default fill:#f8f9fa,stroke:#333,stroke-width:2px,rx:8,ry:8;
+```
 
-Use with extreme care:
-- In one story:
-    - Use extension pack
-    - Target multiple personas
-    - Address multiple problems
-- Blend story arcs:
-    - Merge stories with multiple common elements
-    - Cross-over stories in the same timeline/universe
+### Go further now: Getting started!
 
----
+Ask for workshop
 
-# Example stories
+Use the Canvas
 
-## How I have built Lean Storytelling
-
-I work in product organisations at scale, where multiple disciplines collaborate under constant pressure to deliver and perform.
-
-I am a product manager in this rapidly evolving tech industry, operating across both strategy and execution, discovery and delivery.
-
-I sit at the intersection of many different teams and people — co-constructing with engineering (dev, QA, ops), designers, sales, marketing, and a range of stakeholders. Each speaks their own language and carries their own agenda.
-
-On one side, people push one-way communication without seeking feedback or confirmation it is correlty understood. On the other, people misread the information they receive without asking for clarification nor precision. People go fast and do not waste time, they make few effort to listen carefully, to truly sync — nor to speak in a way that others can actually understand.
-
-Teams and leaders stay loosely coupled, rather staying within their own discipline and perspective. The organisation's network loses value, and the full outcome is far completely reached.
-
-I have built Lean Storytelling: a way of structuring a story as a shared language. It takes the form of a simple A4 canvas, accompanied by a workshop, grounded in proven best practices.
-
-I can now easily and quickly shape stories that can be delivered in many forms — and when properly battle-tested, people don't just receive my story, they sync, align, and resonate with it.
-
-Now I have that superpower to unlock the full potential of transdisciplinarity: going further, together, with greater quality.
-
-## The storytelling is the most powerfull tool for sales
-
-## Tech Manager orchestrating different teams
+Use the experimental app
 
 --- 
 
@@ -194,8 +234,6 @@ Now I have that superpower to unlock the full potential of transdisciplinarity: 
 ## What is Lean Storytelling ("TopSol Playbook")?
 
 Lean Storytelling ("TopSol Playbook") is a collection of recipes, templates, and best practices designed to help you craft effective stories for business, service, and product contexts. It serves as a practical field guide, not a rigid framework.
-
----
 
 ## Who is it for?
 
@@ -210,13 +248,9 @@ This approach is ideal for:
 - Leaders and Managers
 - Freelances
 
----
-
 ## Beyond storytelling: test your assumptions
 
 Beyond only telling stories, Lean Storytelling is a powerful tool that helps you refine your assumptions and hypothesis, your unique or key value proposition, and/or unique selling point, by iterating on what is convincing with feedback loops.
-
----
 
 ## How is it used? From A to Z? What is it for? What's the goal?
 
@@ -230,8 +264,6 @@ Beyond only telling stories, Lean Storytelling is a powerful tool that helps you
 
 **Benefit:** Propser Storytellng synchronizes and aligns people.
 
----
-
 ## How can I deliver the story?
 
 A well-crafted story can be delivered in various formats:
@@ -239,7 +271,6 @@ A well-crafted story can be delivered in various formats:
 - **Written**: Blog posts, slide decks, tickets, social media, specs
 - **Visual**: Images, videos, schemas, drawings, infographies
 
----
 
 ## What does "TopSol Playbook" stand for?
 
@@ -251,16 +282,12 @@ This is the old name for Lean Storytelling.
   - **P**: Problem (the challenge they face)
   - **Sol**: Solution (what you offer)
 
----
-
 ## Where does it come from?
 
 Lean Storytelling builds on established methodologies:
 - **Lean Canvas** by Ash Maurya ([free online course](https://www.udemy.com/lean-canvas-course/))
 - **Monomyth (Hero’s Journey)** ([Wikipedia](https://en.wikipedia.org/wiki/Hero%27s_journey))
 - **The Golden Circle** ("Why How What") by Simon Sinek ([TED Talk](https://www.ted.com/talks/simon_sinek_how_great_leaders_inspire_action))
-
----
 
 ## What can I do to help?
 
@@ -271,35 +298,30 @@ Lean Storytelling builds on established methodologies:
 - Share your knowledge and experience
 - Test the alpha app and send feedback
 
----
-
 ## Can I use, share, and modify Lean Storytelling?
 
 Yes! Lean Storytelling is licensed under **Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)**. You are free to:
 - **Share**: Copy and redistribute in any medium or format
 - **Adapt**: Remix, transform, and build upon the material for any purpose, including commercially
 
----
-
-## Can you organize a workshop or a keynote?
+## Can you organize a workshop?
 
 Yes.
-
-Workshop:
 
 - For up to 10 people
 - Duration 1.5 hours
 - Hands on, practice hard, straight to the point, learn by doing, peer review
+
+Contact me: [LinkedIn](https://www.linkedin.com/in/nicolasverite/)
+
+## Can you organize a keynote?
 
 Keynote: 20 min or 40 min
 - Roots of humanity storytelling
 - Reverse-engineer Hollywood-style storytelling
 - Master the craft and art of business storytelling
 
-Contact me via: [LinkedIn](https://www.linkedin.com/in/nicolasverite/)
-
-
----
+Contact me: [LinkedIn](https://www.linkedin.com/in/nicolasverite/)
 
 ## Can I get the Canvas?
 
@@ -309,8 +331,15 @@ Ask me for the PDF, ODF, Docx versions
 
 Ask me for Mural, Miro, Notion, etc.
 
----
-
 ## Can an app help me write my own stories?
 
-Yes, this is being vide coded under AGPLv3 license
+Yes, this is being vibe-coded under AGPLv3 license: try now, contact me: [LinkedIn](https://www.linkedin.com/in/nicolasverite/)
+
+## Is there a book?
+
+If there is demand: contact me: [LinkedIn](https://www.linkedin.com/in/nicolasverite/)
+
+## Can we partner?
+
+Yes, contact me: [LinkedIn](https://www.linkedin.com/in/nicolasverite/)
+
