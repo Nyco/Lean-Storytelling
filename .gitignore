@@ -10,5 +10,15 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Node.js
+node_modules/
+dist/
+build/
+.env
+.env.local
+
+# Docker
+.dockerignore
 node_modules/
 data.json

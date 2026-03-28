@@ -36,8 +36,15 @@ All contributions are Markdown edits. When adding new `docs/` pages, list them i
 - `sessionStorage` (session-scoped, cleared on tab/window close); in-memory object fallback if sessionStorage unavailable (001-basic-story-form)
 - JavaScript ES2020, HTML5, CSS3 (no transpilation, no bundler) + None — zero runtime dependencies (002-full-story-builder)
 - `sessionStorage` with in-memory object fallback (same as v0.1) (002-full-story-builder)
+- Node.js 20 LTS (backend) + Vanilla JS ES2020 (frontend, unchanged from v0.2) + Fastify 5, `@fastify/jwt`, `@fastify/cookie`, `@fastify/static`, `@fastify/cors`, `postgres` (pg client), `resend`, `crypto` (Node built-in for token hashing) (003-v03-public-app)
+- PostgreSQL 16 (server-side persistence); browser sessionStorage (anonymous session, existing) (003-v03-public-app)
+- JavaScript ES2020, HTML5, CSS3 (vanilla, no transpilation) + None — zero runtime dependencies (constitution requirement) (004-story-builder-polish)
+- Client-side sessionStorage for dirty queue; no new storage (004-story-builder-polish)
+- JavaScript ES2020, HTML5, CSS3 — no transpilation, no bundler + None — zero runtime dependencies (005-wave-step-labels)
+- N/A — this feature touches only rendering logic (005-wave-step-labels)
 
 ## Recent Changes
+- 003-v03-public-app: Implemented full v0.3 — Node.js/Fastify backend, PostgreSQL, magic link auth, JWT httpOnly cookie, Stories + Versioning sidebar, auto-save with offline queue, sessionStorage migration on login, onboarding/profile modals, account deletion, Docker Compose stack
 - 002-full-story-builder: Implemented full v0.2 — all 3 waves active, wave router, real-time preview, unified field template with foldable advice, story title widget, accessible progress bars, self-hosted Playfair Display + DM Sans fonts
 - 001-basic-story-form: Added HTML5, CSS3, JavaScript ES2020 (no transpilation, no bundler) + None — zero runtime dependencies
 
